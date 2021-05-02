@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
 <head>
 <style>
@@ -11,6 +12,17 @@
 	top: 20px;
 	width: 300px;
 	height: 30px;
+	background: #CCC;
+	color : #000;
+}
+
+.stopDiv2 {
+	position: fixed;
+	_position: absolute;
+	left: 200px;
+	top: 50px;
+	width: 300px;
+	height: 100px;
 	background: #CCC;
 	color : #000;
 }
@@ -44,27 +56,51 @@
 <link rel="stylesheet" href="/v/ipad-pro/ae/built/styles/overview.built.css" type="text/css" />
 <script text="javascript">
 
+
 let screenHeight;
 	window.onload = function() {
-		screenHeight =screen.availHeight; 	
-		console.log("ÇöÀç ½ºÅ©¸°ÀÇ Å©±â : " + screenHeight);
+		screenHeight =window.innerHeight; 	
+		console.log("í˜„ì¬ ìŠ¤í¬ë¦°ì˜ í¬ê¸° : " + screenHeight);
+		
+		console.log(screen);
+		console.log(window);
+		console.log(document);
+		
 	}
 	
 	window.addEventListener('scroll', () => {
-		let scrollLocation = document.documentElement.scrollTop; // ÇöÀç ½ºÅ©·Ñ¹Ù À§Ä¡ (top)
-		let windowHeight = window.innerHeight; // ½ºÅ©¸° Ã¢
-		let fullHeight = document.body.scrollHeight; //  margin °ªÀº Æ÷ÇÔ x
-		let centerScrPosition = Math.round(scrollLocation + screenHeight/1) ; // 2·Î ³ª´­ ¶§ ¼¾ÅÍ±âÁØ ½ºÅ©¸° Æ÷Áö¼Ç
+		let scrollLocation = document.documentElement.scrollTop; // í˜„ì¬ ìŠ¤í¬ë¡¤ë°” ìœ„ì¹˜ (top)
+		let windowHeight = window.innerHeight; // ìŠ¤í¬ë¦° ì°½
+		let fullHeight = document.body.scrollHeight; //  margin ê°’ì€ í¬í•¨ x
+		let centerScrPosition = Math.round(scrollLocation + screenHeight/1) ; // 2ë¡œ ë‚˜ëˆŒ ë•Œ ì„¼í„°ê¸°ì¤€ ìŠ¤í¬ë¦° í¬ì§€ì…˜
 		
-		console.log("Çö ½ºÅ©¸° Æ÷Áö¼Ç : " + scrollLocation);
+		//console.log("í˜„ ìŠ¤í¬ë¦° í¬ì§€ì…˜ : " + scrollLocation);
 		
-		document.querySelector(".stopDiv").innerHTML = "Çö ½ºÅ©·Ñ Æ÷Áö¼Ç : " + scrollLocation;
+		
+		document.querySelector(".stopDiv").innerHTML = "í˜„ ìŠ¤í¬ë¡¤ í¬ì§€ì…˜ : " + scrollLocation;
+		document.querySelector(".stopDiv2").innerHTML = "í˜„ ìŠ¤í¬ë¦° í¬ê¸° : " + windowHeight;
+		document.querySelector(".stopDiv2").append("screenHeight : " + screenHeight) ;
 		
 		let moveDivs = document.querySelectorAll(".moveDiv");
 		for(let i = 0 ; i < moveDivs.length; i++ ) {
 			let _top = Math.round(moveDivs[i].getBoundingClientRect().top - screenHeight/2);
-			console.log(_top);
-			if ( _top < 0 ) { //È­¸é °¡¿îµ¥¿¡ ¿ÔÀ» ¶§
+			
+			let clientRect = moveDivs[i].getBoundingClientRect(); // DomRect êµ¬í•˜ê¸° (ê°ì¢… ì¢Œí‘œê°’ì´ ë“¤ì–´ìˆëŠ” ê°ì²´)
+			let relativeTop = clientRect.top; 
+
+
+			if( screenHeight > relativeTop ){
+				var persent = ((screenHeight - relativeTop) / screenHeight * 100);
+				moveDivs[i].style.setProperty("width", persent+"%");
+				moveDivs[i].style.setProperty("color", "#000"); 
+			
+			}else {
+				moveDivs[i].style.removeProperty("width");
+				moveDivs[i].style.removeProperty("color");
+			}
+			
+			/*
+			if ( _top < 0 ) { //í™”ë©´ ê°€ìš´ë°ì— ì™”ì„ ë•Œ
 				moveDivs[i].style.setProperty("width", "90%");
 				moveDivs[i].style.setProperty("color", "#000");
 			
@@ -72,6 +108,7 @@ let screenHeight;
 				moveDivs[i].style.removeProperty("width");
 				moveDivs[i].style.removeProperty("color");
 			}
+			*/
 			
 		
 		}
@@ -84,6 +121,7 @@ let screenHeight;
 </head>
 <body>
 	<div class="stopDiv"></div>
+	<div class="stopDiv2"></div>
 	<div class="bodyDiv">
 		is home.
 		

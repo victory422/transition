@@ -20,7 +20,7 @@
 	left: 200px;
 	top: 50px;
 	width: 300px;
-	height: 30px;
+	height: 100px;
 	background: #CCC;
 	color : #000;
 }
@@ -57,10 +57,12 @@
 
 let screenHeight;
 	window.onload = function() {
-		screenHeight =screen.availHeight; 	
+		screenHeight =window.innerHeight; 	
 		console.log("현재 스크린의 크기 : " + screenHeight);
 		
-		console.log(location);
+		console.log(screen);
+		console.log(window);
+		console.log(document);
 		
 	}
 	
@@ -70,14 +72,32 @@ let screenHeight;
 		let fullHeight = document.body.scrollHeight; //  margin 값은 포함 x
 		let centerScrPosition = Math.round(scrollLocation + screenHeight/1) ; // 2로 나눌 때 센터기준 스크린 포지션
 		
-		console.log("현 스크린 포지션 : " + scrollLocation);
+		//console.log("현 스크린 포지션 : " + scrollLocation);
+		
 		
 		document.querySelector(".stopDiv").innerHTML = "현 스크롤 포지션 : " + scrollLocation;
+		document.querySelector(".stopDiv2").innerHTML = "현 스크린 크기 : " + windowHeight;
+		document.querySelector(".stopDiv2").append("screenHeight : " + screenHeight) ;
 		
 		let moveDivs = document.querySelectorAll(".moveDiv");
 		for(let i = 0 ; i < moveDivs.length; i++ ) {
 			let _top = Math.round(moveDivs[i].getBoundingClientRect().top - screenHeight/2);
-			console.log(_top);
+			
+			let clientRect = moveDivs[i].getBoundingClientRect(); // DomRect 구하기 (각종 좌표값이 들어있는 객체)
+			let relativeTop = clientRect.top; 
+
+
+			if( screenHeight > relativeTop ){
+				var persent = ((screenHeight - relativeTop) / screenHeight * 100);
+				moveDivs[i].style.setProperty("width", persent+"%");
+				moveDivs[i].style.setProperty("color", "#000"); 
+			
+			}else {
+				moveDivs[i].style.removeProperty("width");
+				moveDivs[i].style.removeProperty("color");
+			}
+			
+			/*
 			if ( _top < 0 ) { //화면 가운데에 왔을 때
 				moveDivs[i].style.setProperty("width", "90%");
 				moveDivs[i].style.setProperty("color", "#000");
@@ -86,6 +106,7 @@ let screenHeight;
 				moveDivs[i].style.removeProperty("width");
 				moveDivs[i].style.removeProperty("color");
 			}
+			*/
 			
 		
 		}
