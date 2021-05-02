@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
+
 <html>
 <head>
 <style>
@@ -8,6 +8,17 @@
 	_position: absolute;
 	left: 200px;
 	top: 20px;
+	width: 300px;
+	height: 30px;
+	background: #CCC;
+	color : #000;
+}
+
+.stopDiv2 {
+	position: fixed;
+	_position: absolute;
+	left: 200px;
+	top: 50px;
 	width: 300px;
 	height: 30px;
 	background: #CCC;
@@ -43,10 +54,14 @@
 <link rel="stylesheet" href="/v/ipad-pro/ae/built/styles/overview.built.css" type="text/css" />
 <script text="javascript">
 
+
 let screenHeight;
 	window.onload = function() {
 		screenHeight =screen.availHeight; 	
 		console.log("현재 스크린의 크기 : " + screenHeight);
+		
+		console.log(location);
+		
 	}
 	
 	window.addEventListener('scroll', () => {
@@ -83,6 +98,7 @@ let screenHeight;
 </head>
 <body>
 	<div class="stopDiv"></div>
+	<div class="stopDiv2"></div>
 	<div class="bodyDiv">
 		is home.
 		
