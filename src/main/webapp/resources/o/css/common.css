@@ -1,0 +1,831 @@
+@charset "UTF-8";
+
+@font-face{font-family: 'NanumSquare';font-style: normal;font-weight: 300;src: url(https://static.talented.co.kr/static_data/font/NanumSquareL.woff) format("woff")}
+@font-face{font-family: 'NanumSquare';font-style: normal;font-weight: 400;src: url(https://static.talented.co.kr/static_data/font/NanumSquareR.woff) format("woff")}
+@font-face{font-family: 'NanumSquare';font-style: normal;font-weight: 700;src: url(https://static.talented.co.kr/static_data/font/NanumSquareB.woff) format("woff")}
+@font-face{font-family: 'NanumSquare';font-style: normal;font-weight: 900;src: url(https://static.talented.co.kr/static_data/font/NanumSquareEB.woff) format("woff")}
+/*@font-face{font-family: 'cwTeXHei';font-style: normal;font-weight: 900;src: url(https://static.talented.co.kr/static_data/font/cwTeXHei-zhonly.woff) format("woff")}*/
+@font-face{font-family: 'cwTeXHei';font-style: normal;font-weight: 900;src: url(https://fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.woff) format("woff")}
+
+#moreview {
+	color: #24b1f5;
+    border: 1px solid #24b1f5;
+    border-radius: 50px 50px;
+    width: fit-content;
+    margin: auto;
+    padding: 8px 20px;
+}
+.ql-align-right {
+	text-align: right;	
+}
+.ql-align-justify {
+	text-align: justify;
+}
+.ql-align-center {
+	text-align: center;
+}
+div.media_text {
+	margin:0 20px;
+}
+.talented_uploaded_image {
+	max-width: 100%;
+}
+.talented_new_upload_image {
+	max-width: 100%;
+}
+.video_play_over {
+	width: 100px;
+	height: 100px;
+	z-index: 2;
+	position: relative;
+	bottom: 50px;
+}
+.image_overlay_style {
+	position: absolute;
+    /*background: rgba(0, 0, 0, 0.1);*/
+    background: rgba(0, 0, 0, 0);
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 0.5rem;
+}
+.image_overlay_style_10 {
+	position: absolute;
+    background: rgba(0, 0, 0, 0.1);
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 0.5rem;
+}
+.message_form_alert {
+	position: fixed;
+	background-color: white;
+	margin:0 10px;
+	padding: 15px;
+}
+.col.contents_style {
+	display: contents;
+}
+.width_and_break {
+	word-break: break-word;
+    width: 70vw;
+    display: block;
+}
+.desc-page-main {
+	width:100%;
+	padding-bottom: 100px;
+}
+.desc-page-main .title-img {
+	width: 100%;
+}
+.desc-section-block {
+	margin-top: 40px;
+}
+.title1 {
+  font-size: 2em;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.14;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+  margin: 20px 0 40px 0;
+}
+.desc-badge {
+	margin: 0 .333rem .633rem 0;
+	color: #fc0037;
+	padding: 22px 33px;
+    border: 1px solid;
+    font-weight: 900;
+    background: none;
+	min-width: 3.583rem;
+	font-size: 1.233rem;
+    line-height: 1rem;
+    letter-spacing: .072em;
+	border-radius: 7em;
+	display: inline-block;
+	text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+}
+.desc-btn-black {
+    background: #000000 !important;
+    border-color: #000000 !important;
+    color: white;
+	margin: 10px 0 0 0;
+}
+.desc-btn-white {
+    background: #ffffff !important;
+    border-color: #000000 !important;
+    color: black;
+	margin: 10px 0 0 0;
+	padding: 14px 22px;
+}
+.margin-bottom-40 {
+	margin-bottom: 40px;
+}
+
+/* Reset with bootstrap */
+html{font-size: 12px}
+body, p, h1, h2, h3, span, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select{margin: 0;padding: 0}
+body, input, textarea, select, button, table{font-family: 'cwTeXHei','NanumSquare',"맑은 고딕",'Apple SD Gothic Neo',sans-serif}
+body{-ms-word-break: break-all;word-break: keep-all;word-wrap: break-word;background: #fff;font-size: 1rem;color: #000}
+a, a:hover, a:focus, a:active{text-decoration: none;color: inherit}
+a, button, input, textarea{transition: border-color .15s ease-in-out, backgroud-color .15s ease-in-out,color .15s ease-in-out,opacity .15s ease-in-out,transform .15s ease-in-out,box-shadow .4s}
+li{list-style: none}
+address, em{font-style: normal}
+label, button{cursor: pointer}
+label{margin-bottom: 0}
+table{width: 100%}
+textarea{resize: none}
+strong, b{font-weight: 900}
+img{vertical-align: top}
+br{font-family: arial}
+
+
+/* Helper Classes */
+.skip{z-index: 200;background: #000;text-align: center;color: #fff}
+.skip:active, .skip:focus{position: absolute;padding: .5rem;color: #fff}
+.no-style{background: none;border: 0}
+.center-block{display: block;margin-left: auto;margin-right: auto}
+.d-flex-space{display: flex;align-items: center;justify-content: space-between}
+.disabled{pointer-events: none}
+
+/* Grid */
+.row:not(.no-gutters){margin-left: -.5rem;margin-right: -.5rem}
+.row:not(.no-gutters)>[class*=col]{padding-left: .5rem;padding-right: .5rem}
+
+/* Typography */
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{margin: 0;font-weight: 700}
+h1, h2, h3, h4, h5, h6{font-weight: 900}
+.display-1{font-size: 2.083rem;font-weight: 900}
+.display-2{font-size: 1.583rem;font-weight: 900}
+.h5{font-size: 1.167rem;line-height: 1.143}
+.h6{font-size: 1.083rem;line-height: 1.5}
+.small{font-size: .917rem}
+.font-weight-exbold{font-weight: 900}
+
+/* Theme */
+.text-primary, a.text-primary:focus, a.text-primary:hover{color: #d33535 !important}
+.text-secondary{color: #666 !important}
+.text-light{color: #999 !important}
+.text-body{color: #000 !important}
+.text-point{color: #5a50d7 !important;font-weight: 900}
+.bg-light{background: #f6f6f6 !important}
+.bg-dark{background: #312f2f !important}
+.bg-darken{background: #242323 !important}
+.bg-red{background: #d33535 !important}
+.bg-secondary{background: #52606d !important}
+.bg-primary{background: #d33535 !important}
+
+/* Icon */
+[class*=icon-]{display:inline-block;overflow:hidden;margin:0;padding:0;border:0;background-color:transparent;background-position:50% 50%;background-size: auto 100%;background-repeat:no-repeat;font-size:0;line-height:0;text-decoration:none;vertical-align: middle;text-indent:-1000em}
+[class*=-icon-]{text-indent:0;overflow: inherit;} /* quill 에디터 스타일 버그 대응 */
+
+/* Form */
+input[type=password]{font-family: arial}
+.form-control{height: 2.667rem;border-color: #dfdede;-webkit-appearance: none;font-size: 1.083rem;border-radius: .4rem;box-shadow: none !important;color: #000}
+.form-control.between{width:45%;height: 2.667rem;border-color: #dfdede;-webkit-appearance: none;font-size: 1.083rem;border-radius: .4rem;box-shadow: none !important;color: #000}
+textarea.form-control{height: auto}
+.form-control+.form-control{margin-top: .833rem}
+.form-control-lg{height: 2.917rem}
+select.form-control, .dropdown-toggle{padding-right: 2rem;background: url(https://static.talented.co.kr/t_img/service_img/img/icon/select.png) no-repeat center right 1.167rem/.917rem auto}
+select.form-control-line{background-position: 100% 50%}
+select::-ms-expand{display: none}
+.form-control::-webkit-input-placeholder{color: #999;opacity: 1}
+.form-control.between::-webkit-input-placeholder{color: #999;opacity: 1}
+.form-control-line{height: 2.917rem;padding: .375rem 0;background: none !important;border-radius: 0;border: 0;border-bottom: 1px solid #e8e8e8}
+.form-control:focus, .form-control-line:focus+.input-group-append{border-color: #000}
+.form-control.between:focus{border-color: #000}
+.control-label{display: block;font-size: .917rem;color: #929191}
+.control-label.text-body{margin-bottom: 1.25rem;font-size: 1rem;font-weight: 900}
+.form-group{margin-bottom: 2.417rem}
+.custom-control{padding-left: 2.333rem}
+.custom-control.right{padding-left: 0;padding-right: 2.333rem}
+.right .custom-control-label::before, .right .custom-control-label::after{left: auto;right: -2.333rem}
+.custom-control-label{min-height: 1.5rem;display: inline-block;vertical-align: top;font-weight: 700}
+.custom-control-label::before, .custom-control-label::after{top: 0;left: -2.333rem;width: 1.5rem;height: 1.5rem;box-shadow: none !important}
+.custom-control-label::before{border-color: #d1d1d1;background: none !important}
+.custom-control-input:checked~.custom-control-label::before{border-color: #d9481c;border-width: 2px}
+.custom-control-input:checked~.custom-control-label{color: #d9481c}
+.custom-checkbox .custom-control-input:indeterminate~.custom-control-label::before{border-color: #d1d1d1}
+.custom-checkbox .custom-control-input:checked~.custom-control-label::after{background: url(https://static.talented.co.kr/t_img/service_img/img/icon/chk.png) no-repeat 50% 50%/61% auto}
+.custom-control-block{padding: 2rem 0;font-size: 1.083rem;text-align: center;font-weight: 700}
+.custom-control-block .custom-control-label{display: block;margin: 1.75rem auto 0;width: 2rem;height: 2rem;border: 2px solid #dcdcdc;border-radius: 100%}
+.custom-control-block .custom-control-input:checked~.custom-control-label{border-color: #f00}
+.custom-control-block .custom-control-label:before{display: none}
+.custom-control-block .custom-control-input:checked~.custom-control-label:after{width: 1rem;height: 1rem;border-radius: 100%;top: 50%;left: 50%;margin: -.5rem;background: #f00}
+.custom-control+.custom-control:not(.custom-control-inline){margin: 1.667rem 0}
+.custom-control-inline{margin-right: 0}
+.custom-control-inline+.custom-control-inline{margin-left: 1rem}
+.legend{margin: 1.667rem 0 2.5rem;font-size: 1.25rem;font-weight: 900}
+.legend-text{margin: 0 0 2.5rem;color: #999}
+.legend+.legend-text{margin-top: -1.5rem}
+.legend+.form-text{margin-top: -.833rem}
+.form-control-line+.input-group-append{transition: border-color .15s ease-in-out}
+.input-group{font-size: 1.083rem}
+.input-group-line .input-group-append, .input-group-line .input-group-prepend{align-items: center;padding-right: .6rem;border-bottom: 1px solid #e8e8e8}
+.input-group-line .input-group-append{padding-right: 0;padding-left: .6rem}
+.form-group.row{margin: 0 0 1.333rem;align-items: center}
+.form-group.row .col{padding: 0}
+.col-form-label{max-width: 4.833rem;flex-basis: 4.833rem;font-weight: 700;padding: 0 !important}
+.col-form-label2{font-weight: 700;padding: 0 !important;margin-bottom: 6px;}
+.input-group>.form-control:not(:last-child){border-radius: .4rem}
+.input-group>.input-group-append>.btn{border-radius: 2rem;min-width: 0}
+.input-group-append{padding-left: .583rem;margin: 0}
+.form-control-plaintext{padding: .333rem 0 .25rem;font-size: 1.167rem;font-weight: 900}
+.icon-del{width: 1.333rem;height: 1.333rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/x.png);background-size: 1.333rem auto}
+.custom-switch{padding: 0}
+.custom-switch .custom-control-label::before{position: static;width: 3.95rem;height: 2.1rem;border-radius: 2rem;background: #ddd !important;border: 0}
+.custom-switch .custom-control-label::after{left: .25rem;top: .25rem;width: 1.6rem;height: 1.6rem;background: #fff;border-radius: 100%;}
+.custom-switch .custom-control-input:checked~.custom-control-label::before{background: #212121 !important}
+.custom-switch .custom-control-input:checked~.custom-control-label::after{transform: translateX(1.85rem)}
+
+
+/* Button */
+.btn{min-width: 7rem;position: relative;border-radius: 2rem;padding: 1rem;font-size: 1rem;font-weight: 700;box-shadow: none !important;line-height: 1.167rem}
+.btn-primary{background: #d33535 !important;border-color: #d33535 !important}
+.btn-light{background: #cdcbcb !important;border-color: #cdcbcb !important;color: #fff !important}
+.btn-red{background: #d33535 !important;border-color: #d33535 !important;color: white;}
+.btn-dark{background: #242323 !important;border-color: #242323 !important}
+.btn-xs{padding: 10px 16px;font-size: .833rem;line-height: 1.5}
+.btn-sm{height: 2.667rem;min-width: 8rem;padding: .667rem 1rem .583rem}
+[class*=btn-outline]{background: #fff !important;border-color: #666 !important}
+.btn-outline-light{border-color: #aaa !important;color: #aaa !important}
+.btn-outline-secondary{border-color: #ced0cf !important;color: #999 !important;background: #f3efef !important}
+.btn-outline-info{color: #608989 !important;border-color: #608989 !important}
+.text-link{font-weight: 700;display: inline-flex;align-items: center}
+button.text-link{border: 0;background: none}
+.input-group .text-link{font-size: .917rem}
+.text-link [class*=icon], .btn [class*=icon]:last-child{margin-left: .6rem}
+.icon-plus{width: .917rem;height: .917rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/plus.png)}
+.btn-submit{min-width: 3.667rem;line-height: 1.75rem;border-radius: 1rem;background: none;border: 2px solid;color: #ca4a23;font-weight: 700}
+.icon-chk{width: 1.417rem;height: 1.75rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/chk.png);background-size: 100% auto;vertical-align: top}
+.btn-file{background: #edecec !important;border-color: #e1e1e1 !important}
+.dropdown-toggle:empty::after{display: none}
+.input-group .btn-icon{border: 0;background: none;width: 2.5rem}
+.btn-round{display: block;width: 3.333rem;line-height: 3.333rem;background: rgba(255,255,255,.6);border-radius: 100%;border: 0;margin: .542rem 0;box-shadow: 2px 2px 5.16px 0.84px rgba(0, 0, 0, 0.1);text-align: center}
+.btn-round.disabled{background: #81909e !important}
+.btn-round.bg-primary, .btn-like:not(.on){width: 4.417rem;line-height: 4.417rem;margin: 0;box-shadow: none}
+.btn-round .icon-plus-wh{width: 1.333rem;height: 1.333rem}
+.icon-love{width: 1.917rem;height: 1.583rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/love.png)}
+.icon-more{width: 2rem;height: .417rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/more_grey.png)}
+.btn-wrp{display: flex;flex-wrap: wrap}
+.btn-wrp .btn{margin: 0 .583rem .583rem 0}
+.btn-like{font-size: 0;color: transparent;background: #d33535}
+.btn-like.on{width: auto;line-height: 3.333rem;padding: 0 1.25rem;border-radius: 2rem;font-size: 1.25rem;color: #fff;font-weight: 900;background: #242323;}
+.btn-like.on .icon-love{width: 1.5rem;height: 1.25rem;margin-right: .667rem}
+
+/* Table */
+
+/* Navs */
+.nav-tabs{border-bottom: 0;margin-bottom: .833rem}
+.nav-tabs .nav-item{margin-bottom: 0}
+.nav-tabs .nav-link{border-radius: 0;border: 0;border-bottom: 1px solid transparent;font-size: 1.083rem;color: #999595;font-weight: 700;background: none !important}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{border-bottom-color: #333;color: #1e1e1e}
+.nav-pills{overflow-x: auto;flex-wrap: nowrap;padding: 1.167rem 0 .25rem 2rem;margin: 0 -2rem}
+.nav-pills .nav-item:last-child{padding-right: 2rem}
+.nav-pills .nav-item{padding-right: .5rem}
+.nav-pills .nav-link{min-width: 7rem;border-radius: 2rem;color: #9e9e9e;text-align: center;font-weight: 700}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{background: #ca4a23}
+.nav-pills-dark{padding-bottom: .833rem}
+.nav-pills-dark .nav-link{border: 1px solid #e0e0e0;padding: calc(.5rem - 1px) 1rem}
+.bg-light .nav-pills-dark .nav-link{border-color: #f6f6f6}
+.nav-pills-dark .nav-link.active{background: #333;border-color: #333 !important}
+.pagination{margin-top: 0px}
+.page-link{width: 33px;height: 33px;border-radius: 100%;padding: 0;line-height: 30px;text-align: center;border: 2px solid transparent;font-size: 10px;color: #999;margin: 0 8px;box-shadow: none !important;background: none !important}
+.page-item.active .page-link{border-color: #000;color: #000;font-weight: 700}
+[class*=icon-page-]{width: 11px;height: 18px;background-image: url(https://static.talented.co.kr/t_img/service_img/img_pc/icon/page_arrow.png)}
+.icon-page-prev{transform: scaleX(-1)}
+.pagination .first, .pagination .last{padding: 0 4px}
+.first .page-link, .last .page-link{border-color: transparent !important}
+.page-item:last-child .page-link{margin-right: 0}
+
+
+/* List */
+.list-group-item{padding-left: 0;padding-right: 0;border: 0;border-radius: 0;background: none;font-size: 1.083rem}
+.list-group-arrow .list-group-item{font-weight: 700;padding-right: 1rem;background: url(https://static.talented.co.kr/t_img/service_img/img/icon/arr_blk.png) no-repeat 100% 50%/.667rem auto}
+.list-group-flush .list-group-item{font-size: 1.167rem;padding-top: 1.083rem;padding-bottom: 1.083rem}
+.list-group-flush>li:not(:last-child){border-bottom: 1px solid #edecec !important}
+.list-group-action{position: relative;padding: 1.333rem 0}
+.meta{font-size: .833rem;color: #aaa7a7;white-space: nowrap;padding-left: .5rem}
+.new:before{content: '';display: inline-block;width: .5rem;height: .5rem;border-radius: 100%;background: #f00;vertical-align: middle;margin: -.167rem .6rem 0 0}
+.notify:before{content: '';position: absolute;top: 0;left: -2rem;right: -2rem;bottom: 0;background: #efefef;z-index: -1}
+.list-group .media-profile{margin-bottom: .833rem}
+.list-group .d-flex-space .media-profile{margin-bottom: 0}
+.list-group-message .media-profile{margin-bottom: 0}
+.list-group-message .message{margin: .1rem 0 0 3.5rem;display: block;display:-webkit-box;overflow:hidden;max-width: 100%;max-height:4.5em;line-height:1.5em !important;text-overflow:ellipsis;-webkit-line-clamp:3;-webkit-box-orient:vertical;word-wrap:break-word;word-break:break-all;white-space:normal}
+
+/* Card */
+.card{border: 0;border-radius: 1rem;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.3);}
+.card-thumb, .card-overlay{border-radius: 0;box-shadow: none;background: none}
+.card-img-top, .cover-image{position: relative;padding-bottom: 100%;border-radius: .833rem}
+.card-img-top .card-image{position: absolute;top: 0;left: 0;width: 100%;height: 100%;object-fit: cover;border-radius: 0.5rem}
+.cover-image>img{position: absolute;top: -10%;left: 0;width: 100%;height: 100%;object-fit: cover;border-radius: 1rem}
+.card-body{padding: 2rem 1.5rem}
+.card-body .badge-wrp{flex: 1}
+.card-thumb .card-body{padding: .75rem .6rem}
+.card-title{display: block;margin-bottom: .333rem;font-size: 1.083rem;white-space: nowrap;text-overflow: ellipsis;overflow: hidden}
+.card-list{margin-top: 1.25rem}
+.card-list>li{margin-bottom: 1.5rem}
+.card-list>.col-6{margin-bottom: 1rem}
+.card-by{position: absolute;right: -.583rem;top: 1.667rem;font-size: 1.083rem;color: #fff;font-weight: 900;line-height: 2rem;border-radius: 1rem .5rem .5rem 1rem;background: #f00;min-width: 4.833rem;text-align: center;padding: 0 .583rem}
+.card-badge{position: absolute;left: 1.667rem;max-width: calc(100% - 3.334rem);bottom: 1.667rem}
+.icon-like+.card-badge{padding-right:  3.417rem}
+.r4by3{padding-bottom: 75% !important}
+.card-overlay .card-body{position: absolute;left: 0;right: 0;bottom: 0;color: #fff;padding: 2.25rem}
+.label{display: inline-block;vertical-align: top;line-height: 1.417rem;font-size: .833rem;padding: 0 .917rem;border-radius: 1rem;background: rgba(0,0,0,.6);color: #fff;font-weight: 900;margin: 0 0 1.5rem 1rem;position: relative}
+.label:before{content: '';position: absolute;top: 0;left: -1rem;width: 1.417rem;height: 1.417rem;border-radius: 100%;background: rgba(204,51,51,.7)}
+.card-overlay .card-img-top:after{content: '';position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0,0,0,.15));border-radius: .833rem}
+.card-overlay .display-1{display: block;display:-webkit-box;overflow:hidden;max-width: 100%;max-height:2.4em;line-height:1.2em !important;text-overflow:ellipsis;-webkit-line-clamp:2;-webkit-box-orient:vertical;word-wrap:break-word;word-break:break-all;white-space:normal}
+.card-overlay .text-truncate{font-weight: 900;margin-top: .833rem}
+.card-info{margin: 1.25rem 0 1.25rem;display: flex;align-items: flex-start;justify-content: flex-start}
+.card-info .card-title{font-size: 1.167rem;font-weight: 900}
+.card-info .card-title:not(.name){display: block;display:-webkit-box;overflow:hidden;max-width: 100%;height:3.6em;line-height:1.2em !important;text-overflow:ellipsis;-webkit-line-clamp:3;-webkit-box-orient:vertical;word-wrap:break-word;word-break:break-all;white-space:normal;margin-bottom: 1rem}
+.card-info .info{flex: 1;position: relative;padding-right: 1.25rem}
+.card-info-meta{line-height: 1.4;font-size: .917rem}
+.icon-star{position: relative;width: 1.583rem;height: 1.583rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/star.png);background-size: 1.583rem auto}
+[class*=icon-star], .icon-modal-ok{overflow: visible;outline: 0 !important}
+[class*=icon-star]:before, .icon-modal-ok:before{content: '';position: absolute;top: 50%;left: 50%;width: 3.333rem;height: 3.333rem;transform: translate(-50%,-50%)}
+.icon-star.on, .icon-star-circle.on{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/star_on.png)}
+.card-info:first-child{margin-top: 0}
+.card-info .thumb{display: block;width: 8.5rem}
+.card-info .thumb>img{width: 100%;border-radius: .5rem}
+.card-info .date{margin-top: 1rem;color: #aaa7a7;line-height: 1.2}
+.card-info .code{color: #999;margin: .25rem 0;display: block}
+.card-info+.media-profile{margin-top: 2.5rem}
+.card-post-control{margin: 1.5rem 0 -2rem;border-top: 1px solid #e7e7e7}
+.card-post-control a{display: block;text-align: center;padding: 1rem;font-weight: 700}
+.card-evaluation{display: flex;flex-direction: column;font-size: .917rem}
+.card-evaluation .text-link{align-self: flex-end;font-size: 1.083rem;margin-top: .75rem}
+.card-evaluation .icon-arrow{width: 1.417rem;height: .583rem}
+.card-evaluation>.d-flex-space{margin-bottom: 1.25rem}
+.rating{width: 10.417rem;height: 1.75rem;background: url(https://static.talented.co.kr/t_img/service_img/img/icon/rating.png) repeat-x 0 0/auto 1.75rem}
+.rating .bar{height: 100%;background: url(https://static.talented.co.kr/t_img/service_img/img/icon/rating_on.png) repeat-x 0 0/auto 1.75rem;font-size: 0;line-height: 0;text-indent: -9999em;color: transparent}
+.icon-star-circle{position: relative;width: 1.75rem;height: 1.75rem;border: 1px solid transparent;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/star.png);background-size: .917rem auto;border-radius: 100%}
+.icon-star-circle.on{border-color: #ca4a23}
+.info .icon-star-circle{position: absolute;top: 0;right: 1.25rem}
+.card-evaluation .btn{min-width: 0;border-radius: 0;padding: 1px .6rem 0}
+
+/* progress */
+
+
+/* Badge */
+/*.badge{min-width: 3.583rem;padding: .35rem .5rem .25rem;border-radius: .125rem;font-size: .833rem;line-height: 1rem;letter-spacing: .072em;font-weight: 900;background: rgba(125,125,125,.7);color: rgba(255,255,255,.6);border-radius: 1rem}*/
+.badge{min-width: 3.583rem;padding: 10px 16px;border-radius: .125rem;font-size: .833rem;line-height: 1rem;letter-spacing: .072em;font-weight: 900;background: rgba(0, 0, 0, 0.5);color: rgb(255, 255, 255);border-radius: 7rem}
+.badge-wrp{display: flex;flex-wrap: wrap}
+.badge-wrp .badge{margin: 0 .333rem .333rem 0}
+[class*=badge-outline]{padding: 10px 16px;border: 1px solid;font-weight: 900;background: none}
+.badge-outline-dark{color: #000}
+.badge-outline-primary{color: #e93232}
+.badge-outline-secondary{color: #666;background: #fff}
+.badge-md{font-size: 1rem;padding: .35rem .5rem .25rem}
+
+/* collapse */
+.collapse-toggle{position: relative;display: block;width: 1.5rem;height: 1.5rem;border: 0;background: url(https://static.talented.co.kr/t_img/service_img/img/icon/collapse.png) no-repeat 50% 50%/1.333rem auto;font-size: 0;line-height: 0;text-indent: -999em}
+.collapse-toggle:before{content: '';position: absolute;width: 2.667rem;height: 2.667rem;top: 50%;left: 50%;transform: translate(-50%, -50%)}
+.collapse-toggle.collapsed{transform: scaleY(-1)}
+.collapse-header{display: flex;align-items: center;justify-content: space-between;margin: 1.667rem 0 2.5rem}
+.collapse-header>*{margin: 0}
+
+/* Modal */
+.modal-dialog{max-width: 255px;margin: 0 auto}
+.modal-content{border-radius: 1rem;border: 0}
+.modal-header{height: 2.667rem;padding: 0 1.667rem;border-radius: 1rem 1rem 0 0;background: #e9e8e8;align-items: center;border: 0}
+.modal-header-wide{padding: 2.25rem 1.667rem;background: #e9e8e8;border-radius: 1rem 1rem 0 0}
+.modal-body{padding: 1.667rem}
+.modal-title{font-size: 1.083rem;font-weight: 700}
+.icon-modal-close{position: absolute;top: 0;right: .25rem;width: 2.667rem;height: 2.667rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/modal_close.png);background-size: .75rem auto;z-index: 10}
+.modal-footer{border-top: 0;padding: 0;margin: 1.25rem 1.667rem}
+.modal-footer.confirm{justify-content:space-between;}
+.modal-dialog-alert{max-width: 245px}
+.modal-dialog-alert .modal-content{padding: 1.25rem 2rem 1.917rem;background: #e01919;color: #fff;font-weight: 700;text-align: center}
+.modal-dialog-alert .modal-title{font-size: 1rem;font-weight: 900;padding: 0 0 .833rem;border-bottom: 1px solid rgba(255,255,255,.2);margin-bottom: 1.333rem;text-align: left}
+.icon-modal-ok{position: relative;display: block;width: 1.833rem;height: 1.833rem;margin: 1rem auto 0;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/modal_ok.png)}
+
+/* swiper */
+.swiper-slide img{width: 100%}
+.swiper-pagination{line-height: 0;margin:30px 0 0px 0;position:relative;bottom:0;}
+.swiper-pagination-bullet{width: 10px;height: 10px;}
+.swiper-pagination-bullet-active{background: #ff0037;}
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{margin: 0 .5rem}
+.swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled{display: none}
+
+/* media */
+.media-profile{align-items: center}
+.media-profile>img{width: 1.5rem;height: 1.5rem;border-radius: 100%}
+.media-profile .media-body{padding-left: .5rem;font-size: .917rem;color: #999;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;min-width: 0}
+.media-profile.sm>img{width: 2.25rem;height: 2.25rem}
+.media-profile.sm .media-body{padding-left: .667rem;font-weight: 700}
+.media-profile.md>img{width: 2.667rem;height: 2.667rem}
+.media-profile.md .media-body{font-size: 1.083rem;font-weight: 900;padding-left: .833rem}
+.media-profile .name{font-weight: 700;color: #918f8f;font-size: .917rem}
+
+/* dropdown */
+.dropdown-menu{background: none;border: 0;border-radius: 0;padding: 0;margin-top: .5rem;min-width: 0}
+.dropdown-menu-item{width: 6.083rem;display: block;text-align: center;line-height: 2rem;border-radius: 2rem;color: #fff;font-weight: 700;margin-bottom: .833rem}
+
+
+/*--------------------------------------
+    PAGES
+---------------------------------------*/
+
+/* Layout */
+body{display: flex}
+#wrap{overflow: hidden;display: flex;width: 100%;min-height: 100vh;flex-direction: column}
+#ct{padding-top: 4.333rem;display: flex;flex-direction: column;width: 100%;flex: 1 0 auto}
+#gnb+#ct{padding-bottom: 4rem}
+.container{padding-left: 2rem;padding-right: 2rem;max-width: none}
+#ct>.container{padding-bottom: 2.917rem}
+.fix-bottom{position: fixed;left: 0;bottom: 0;right: 0;z-index: 100}
+.fix-bottom .btn{border-radius: 0;font-size: 1.167rem;padding: 1.417rem;height: 4.167rem}
+.is-fix #ct{padding-bottom: 4.167rem}
+.fix-left, .fix-right{position: fixed;bottom: 2.5rem;z-index: 100}
+.fix-left{left: 1.25rem}
+.fix-right{right: 1.25rem}
+
+/* Header */
+#hd, #fixhd{position: fixed;left: 0;right: 0;top: 0;display: flex;height: 4.333rem;align-items: center;padding: 0 2rem;z-index: 100}
+.is-scroll:not(.bg-dark) #hd{background: #fff}
+.bg-dark #hd{background: #312f2f}
+.hd-right{margin-left:  auto;display: flex;align-items: center}
+.hd-right>*{margin-left: 5px}
+.hd-profile{width: 2.667rem;height: 2.667rem;border-radius: 100%}
+.icon-hd-plus{width: 3.333rem;height: 3.333rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/plus.png);background-size: 1.333rem auto}
+.icon-hd-back, .icon-hd-close, .icon-hd-more{width: 2.333rem;height: 3.333rem;background: url(https://static.talented.co.kr/t_img/service_img/img/icon/back.png) no-repeat 0 50%/1.583rem auto;position: relative;z-index: 5;margin-right: .5rem}
+.icon-hd-back{margin-left: -1rem}
+.icon-hd-close{background: url(https://static.talented.co.kr/t_img/service_img/img/icon/close.png) no-repeat 0 50%/1.25rem auto}
+.icon-hd-more{margin: 0;background: url(https://static.talented.co.kr/t_img/service_img/img/icon/more.png) no-repeat 0 50%/2rem auto}
+body:not(.is-scroll) .icon-hd-back.wh{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/back_wh.png)}
+body:not(.is-scroll) .icon-hd-more.wh{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/more_wh.png)}
+.hd-title{font-size: 1.417rem}
+.hd-title-s{margin-left: .5rem;font-size: 1.25rem;font-weight: 900}
+.hd-title-s.center{position: absolute;margin: 0;top: 50%;left: 50%;transform: translate(-50%,-50%)}
+.hd-right .icon-hd-close{background-position: 100% 50%;margin-right: 0}
+
+
+/* gnb */
+#gnb{position: fixed;left: 0;right: 0;bottom: 0;display: flex;padding: 0 24px;background: #fff;z-index: 100;height: 5rem;border-top: 1px solid #eaeaea;}
+#gnb>a{flex: 1;font-size: .833rem;color: #999999;text-align: center;display: flex;flex-direction: column;justify-content: center;align-items: center;font-weight: 700}
+#gnb [class*=icon]{display: block;width: 1.667rem;height: 2rem;margin: 0 auto 1px}
+.icon-today{background-size: contain;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/today_1.png)}
+.icon-srch{background-size: contain;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/srch_1.png)}
+/*.icon-ok{background-size: contain;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/ok_1.png)}*/
+.icon-ok{background-size: contain;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/ok_beta2.png?1)}
+.icon-story{background-size: contain;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/gnb_story_new.png)}
+.icon-alarm{background-size: contain;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/alarm_1.png)}
+.icon-alarm.unread{background-size: contain;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/alarm_1_new.png)}
+.icon-profile{background-size: contain;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/profile_1.png)}
+#gnb>.active{color: #fc0037}
+.active .icon-today{background-size: contain;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/today_1_on.png)}
+.active .icon-srch{background-size: contain;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/srch_1_on.png)}
+/*.active .icon-ok{background-size: contain;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/ok_1_on.png)}*/
+.active .icon-ok{background-size: contain;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/ok_beta2_on.png?1)}
+.active .icon-story{background-size: contain;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/gnb_story_new_on.png)}
+.active .icon-alarm{background-size: contain;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/alarm_1_on.png)}
+.active .icon-alarm.unread{background-size: contain;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/alarm_1_new_on.png)}
+.active .icon-profile{background-size: contain;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/profile_1_on.png)}
+
+/* Footer */
+#ft{flex-shrink: 0;padding-bottom: 2.417rem;margin-bottom: 4rem}
+.fnb{display: flex;padding: 2.417rem 0 1.667rem;align-items: center;border-top: 1px solid #e9e9e9}
+.fnb>a+a{margin-left: 2rem}
+
+/* index */
+.main-visual{margin-top: .333rem}
+.main-light-visual{margin-top: .333rem}
+.today-update{overflow: visible;margin-top: .333rem}
+/*
+.main-visual .swiper-button-next, .main-visual .swiper-button-prev{top: auto;bottom: 3.333rem;width: 2.667rem;height: 2.667rem;margin: 0;border-radius: 100%;background: none;outline: 0 !important}
+.main-visual [class*=swiper-button]:before, .main-visual [class*=swiper-button]:after{content: '';position: absolute;top: 0;right: 0;width: 2.667rem;height: 2.667rem;border-radius: 100%;background: #fff;z-index: -1}
+.main-visual .swiper-button-next{right: -.667rem}
+.main-visual .swiper-button-prev{left: -.667rem;transform: scaleX(-1)}
+.main-visual [class*=swiper-button]:after{background: #d33535 url(https://static.talented.co.kr/t_img/service_img/img/icon/arrow_wh.png) no-repeat 50% 45%/auto .75rem}
+.main-visual [class*=swiper-button]:before{margin-right: 1.417rem}
+.main-banner-link img{border-radius: 1rem}
+*/
+.today-update{margin-top: 0;line-height: 1.667}
+
+/* content */
+.sect{margin-top: 2.5rem;margin-bottom: 2.5rem}
+.sect-title{margin-bottom: 1rem;font-size: 1.333rem;font-weight: 900}
+.sect-title+.card-list{margin-top: 0}
+.sect-grey-title{margin-bottom: 1.167rem;color: #929191;font-size: .917rem}
+.icon-like{position: absolute;right: 0;bottom: 0;width: 3.417rem;height: 2.75rem;background: url(https://static.talented.co.kr/t_img/service_img/img/icon/like.png) no-repeat center bottom 1rem/1.75rem auto}
+.icon-like.on{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/like_on.png)}
+.flex-content{display: flex;flex-direction: column;height: calc(100vh - 3.333rem)}
+.flex-body{overflow-y: auto;flex: 1;padding: 2rem}
+.flex-bottom{flex-shrink: 0;padding: 2rem;display: flex;align-items: center;justify-content: flex-end}
+.help-text{font-size: .917rem;color: #a5a5a5}
+.hr{margin-top: 1.667rem;margin-bottom: 1.667rem;border-top-color: #e5e5e5}
+.xhr{overflow: hidden;height: 1.667rem;margin: 1.667rem 0;background: url(https://static.talented.co.kr/t_img/service_img/img/icon/x.png) no-repeat 0 50%/auto 100%}
+.xhr:before{content: '';display: block;margin: .8335rem 0 0 2.25rem;border-top: 1px dashed #d6d6d6}
+#fixwrap{position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 999;background: #fff;display: flex;flex-direction: column}
+#fixhd{position: static;flex-shrink: 0;background: #f6f6f6;border-bottom: 1px solid #e1e1e1}
+#fixct{flex: 1;overflow-y: auto;padding-top: 1.667rem;padding-bottom: 1.667rem}
+.term{margin-top: 2rem}
+
+/* popup */
+.modal-link-group{margin: 1rem 1.667rem}
+.modal-link-group:not(:last-child){margin-bottom: 0}
+.modal-link-group>li+li{border-top: 1px solid #dadada}
+.modal-link-item{display: block;line-height: 3.75rem;font-size: 1.167rem;font-weight: 700;padding-right: 1.5rem;background: url(https://static.talented.co.kr/t_img/service_img/img/icon/arrow_gray.png) no-repeat 100% 45%/auto .583rem}
+.support-media{padding: 2.917rem}
+.support-media .h5{margin-bottom: 2.5rem}
+.support-media li{margin-bottom: .833rem}
+.sns-share{padding: 3.333rem 2.5em}
+.sns-share li{text-align: center;color: #ababab;margin-bottom: 2.083rem}
+.sns-share [class*=icon]{display: block;width: 4.167rem;height: 4.167rem;margin:  0 auto .833rem}
+.icon-share-face{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/face.png)}
+.icon-share-twitter{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/twitter.png)}
+.icon-share-kakao{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/kakao.png)}
+.icon-share-line{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/line.png)}
+.icon-share-band{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/sns_band_3x.png)}
+.icon-share-naver{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/sns_naver_3x.png)}
+.sns-share .btn{display: block;width: 12rem;margin: 1rem auto 0}
+.rating-label-group{display: flex;align-items: center;flex-direction: row-reverse;justify-content: center;margin: 1.667rem 0 .833rem}
+.rating-label{margin: 0 .3rem;display: block;width: 2.333rem;height: 2.25rem;background: url(https://static.talented.co.kr/t_img/service_img/img/icon/star_wh.png) no-repeat 50% 50%/100% auto;font-size: 0;line-height: 0;text-indent: -9999em;text-align: left;color: transparent}
+input:checked+.rating-label{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/star_on.png)}
+input:checked~.rating-label{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/star_on.png)}
+.fitler-form-group .col-form-label{flex-basis: 2.833rem;max-width: 2.833rem}
+.fitler-form-group .btn{min-width: 0;padding-left: 1.667rem;padding-right: 1.667rem;margin-top: 1.2rem}
+.modal-header-wide .join-info{text-align: center;padding: 1.4rem 0 0}
+.modal-header-wide .join-info>li{font-size: .833rem;margin-top: .25rem}
+.modal-body .join-link{margin: .833rem 0 2.5rem}
+.modal-body .legend-text{margin-bottom: 1.667rem}
+
+
+/* join */
+.ct-logo{position: relative;margin-bottom: 1.25rem}
+.ct-logo:before, .ct-logo:after{content: '';position: absolute;width: .833rem;height: .833rem;border-radius: 100%;top: 50%;margin-top: -.4165rem}
+.ct-logo:before{background: #3d5aa3;right: 100%;margin-right: 1.5rem}
+.ct-logo:after{background: #e00b18;right: 0}
+.join-info{padding: 1rem 0 2.833rem}
+.join-info>li{margin-top: 1rem;font-size: 1.083rem}
+.join-link{display: flex;align-items: center;padding: 0 1.75rem;height: 4rem;border: 2px solid #ddd;border-radius: 1rem;font-size: 1.083rem;font-weight: 700}
+.join-link>[class*=icon]:first-child{width: 1.593rem;height: 1.333rem;margin-right: .917rem}
+.icon-email{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/email.png)}
+.icon-arr{margin-left: 1.167rem;width: .667rem;height: 1.167rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/arr.png)}
+.icon-arr.wh{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/arr_wh.png)}
+.join-link .icon-arr{margin-left: auto}
+.login-email-link{display: inline-block;vertical-align: top;margin: 3.75rem 0 2.083rem}
+.form-text{margin: 2rem 0;min-height: 3rem;line-height: 1.5rem}
+
+/* search */
+.form-hd-srch{position: absolute;top: 0;left: 2rem;right: 2rem;bottom: 0}
+.form-hd-srch .form-control{height: 100%;background: none;padding-left: 2.5rem;padding-right: 1.5rem;font-size: 1.167rem;font-weight: 700}
+.form-hd-srch .icon-hd-close{position: absolute;top: 0;right: 0;width: 1.5rem;background-size: auto 1rem}
+.filter{padding: 0 2rem;display: flex}
+.srch-select{display: inline-block;margin-right: .6rem;min-width: 8.333rem;vertical-align: top;padding: .3rem 1rem;height: 2.5rem;-webkit-appearance: none;text-align-last:center;border-radius: 2rem;border: 1px solid transparent;color: #999898;font-size: 1.167rem;font-weight: 700;background: #fff;box-shadow: 3px 4px 8.6px 1.4px rgba(0, 0, 0, .11)}
+.srch-select.selected{box-shadow: none;border-color: #d33535;color: #d33535}
+.srch-select option{color: #000}
+.form-srch{display: flex;align-items: flex-end;height: 3.167rem;position: relative;margin-top: 2rem}
+/*.form-srch:before, .form-srch:after{content: '';position: absolute;top: 0;bottom: .5rem;border: 3px solid #323131;width: 1.833rem}
+.form-srch:before{border-radius: 1.5rem 0 0 1.5rem;border-right: 0;left: 0}
+.form-srch:after{border-radius: 0 1.5rem 1.5rem 0;border-left: 0;right: 0}*/
+.form-srch .form-control{padding-right: 2.917rem;font-weight: 700;border-bottom-width: 3px}
+.btn-srch{position: absolute;border: 0;right: 0.167rem;bottom: .5rem;height: 2.917rem;width: 2.917rem;background: url(https://static.talented.co.kr/t_img/service_img/img/icon/search.png) no-repeat 50% 50%/1.5rem auto;font-size: 0;line-height: 0;text-indent: -9999em}
+.category-control{padding-top: .667rem}
+.category-control-input{display: block;margin-bottom: 1.25rem}
+/*
+.category-control-label{display: block;border: 1px solid #e5e5e5;font-size: 1.2rem;font-weight: 900;padding: .7rem 2.25rem .7rem 1.667rem;border-radius: 2rem;background: #fff url(https://static.talented.co.kr/t_img/service_img/img/icon/chk_grey.png) no-repeat center right .833rem/.833rem auto}
+input:checked+.category-control-label{border-color: #323131;background-color: #323131;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/chk.png);color: #fff}
+*/
+.category-control-label{display: block;border: 1px solid #e5e5e5;font-size: 1.2rem;font-weight: 900;padding: .7rem 2.25rem .7rem 1.667rem;border-radius: 2rem;background: #fff}
+input:checked+.category-control-label{border-color: #323131;background-color: #323131;color: #fff}
+
+/* login */
+.frm-login>.h6{padding: 2.5rem 0;font-weight: 700}
+.frm-login .form-control{height: 3.167rem;border-radius: 2rem;padding-left: 2rem;padding-right: 2rem}
+.frm-login .btn-primary{margin: 2rem 0}
+.botom-join-link>p{margin: 4.167rem 0 1.25rem}
+
+/* profile */
+.summary-header{padding: 1.75rem 0;margin-top: -3.333rem;background: #fff;border-radius: 0 0 1.75rem 1.75rem}
+.summary-header.is-hd{padding-top: 4.167rem}
+.summary-header .media-profile{margin-bottom: 1.25rem}
+.summary-header .media-profile>img{width: 45px;height: 45px}
+.summary-header .media-body{padding-left: 1rem;font-size: 1.167rem;font-weight: 900;color: #000}
+.icon-arrow{width: 1.167rem;height: .5rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/arrow_red.png);margin: -.167rem 0 0 .6rem}
+.icon-arrow.blk{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/arrow_blk.png)}
+.desc-group{text-align: center;margin: 1.333rem 0;justify-content: center}
+.desc-group>[class*=col]{display: flex;flex-direction: column-reverse;font-weight: 900}
+.desc-group dd{font-size: 2rem;color: #c8c4c4}
+.add-link{display: flex;padding: 0 1.583rem;align-items: center;height: 2.5rem;border: 1px solid #e6e6e6;border-radius: 2rem}
+.add-link:after{content: '';width: 1.083rem;height: 1.083rem;background: url(https://static.talented.co.kr/t_img/service_img/img/icon/plus.png) no-repeat 50% 50%/1.083rem auto;margin-left:  auto}
+
+/*
+#message{height: calc(100vh - 3.333rem);display: flex;flex-direction: column;border-top: 1px solid #e1e1e1}
+.message-body{flex: 1;overflow-y: auto;padding: 1rem 2rem}
+.message-body .date{width: 7.75rem;margin: 0 auto 1.333rem;line-height: 2rem;color: #fff;font-weight: 700;text-align: center;border-radius: 2rem;background: #cecece}
+.message-form{flex-shrink: 0}
+*/
+#message{padding: 1px 0 4.333rem}
+#message:before{content: '';position: fixed;top: 3.333rem;left: 0;right: 0;border-top: 1px solid #e1e1e1}
+.message-body{padding: 1rem 2rem}
+.message-body .date{width: 7.75rem;margin: 0 auto 1.333rem;line-height: 2rem;color: #fff;font-weight: 700;text-align: center;border-radius: 2rem;background: #cecece}
+.message-form{position: fixed;left: 0;right: 0;bottom: 0;height: 4.333rem}
+
+.message-content{display: inline-block;padding: 1.333rem;max-width: 90%;background: #fff;border: 1px solid #ebebeb;border-radius: .667rem;text-align: left}
+.message-box{margin-bottom: 1.75rem}
+.message-box .time{margin: .833rem .667rem 0;font-size: .833rem;color: #aaa7a7}
+.message-box.my{text-align: right}
+.message-box.my .message-content{background: #e9f6ff;border-color: #cddde9}
+.message-form .form-control{height: 4.333rem;border-radius: 0 !important;border-width: 1px 0 0 0;padding-left: 1.667rem}
+.message-form .btn{border-radius: 0;min-width: 0;width: 4.667rem;padding: 0;line-height: 4.333rem;height: 100%;border: 0 !important}
+.follow-buttons [class*=btn]{display: inline-flex;align-items: center;height: 2.25rem;border-radius: 1.2rem;justify-content: center;vertical-align: top}
+.btn-content_mod{width: 3.833rem;background: #f00}
+.btn-follow{width: 3.833rem;background: #f00}
+.btn-follow.grn{background: #6b9f9e}
+.btn-modify{width: 3.833rem;background: #f00}
+.icon-follow{width: 1.917rem;height: 1rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/follow.png);background-size: auto 100%}
+.btn-msg{width: 2.25rem;background: #fff;margin-left: .5rem;box-shadow: 1px 1px 2.58px 0.42px rgba(0, 0, 0, 0.2)}
+.icon-msg{width: 1.083rem;height: .917rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/email.png);background-size: 100% auto}
+
+/* chnnel */
+.myprofile{padding-bottom: 2rem;margin-top: 5.834rem;min-height: calc(100vh - 9.167rem);border-radius: 1.667rem 1.667rem 0 0;background: #fff}
+.img-profile{width: 6.5rem;height: 6.5rem;border-radius: 100%}
+.profile .name{font-size: 1.75rem;font-weight: 900;margin-top: .5rem}
+.myprofile .profile{margin: -3.25rem 0 2rem;text-align: center}
+.myprofile .h6{line-height: 1.7;text-align: center;font-weight: 700}
+.myprofile .list-group{margin-top: 1.667rem}
+.groupby{display: block;line-height: 2.417rem;padding: 0 1.667rem;border-radius: .25rem;background: #f4f3f3}
+.groupby-list{padding: 1.667rem;font-size: 1.083rem}
+.groupby-list>li{margin-bottom: 1em}
+
+/* view */
+.view{position: relative;z-index: 5}
+.view .container{padding: 2rem 2rem 4rem;border-radius: 1.75rem 1.75rem 0 0;background: #f6f6f6}
+.view .display-2, .notice .display-2{font-weight: 700}
+.view .date{font-size: 1rem;color: #b1aeae;padding: .5rem 0 1rem}
+.view .label{position: absolute;width: 7.333rem;line-height: 2.25rem;padding-bottom: 2rem;background: rgba(202,74,35,.8);border-radius: 1.75rem 1.75rem 0 0;text-align: center;top: 0;left: 0;margin: -2.25rem 0 0;z-index: -1}
+.view .label:before{display: none}
+.view-content{margin-top: 1.417rem;font-size: 1.167rem;line-height: 1.643}
+.view-content img{max-width: 100%}
+.cover-image{position: fixed;top: 0;left: 0;right: 0}
+.cover-image+.view{margin-top: calc(75% - 5.333rem)}
+.cover-image>img, .cover-image{border-radius: 0}
+
+/* notice */
+.notice{padding-top: 1.667rem;padding-bottom: 1.667rem}
+.notice-item{display: block;padding-right: 1.5rem;background: url(https://static.talented.co.kr/t_img/service_img/img/icon/arrow_grey.png) no-repeat 100% 50%/1.5rem auto;color: #aaa7a7;margin-bottom: 1.667rem}
+.notice-item .text-truncate{display: block;margin-bottom: .5rem;font-size: 1.083rem;color: #1e1e1e}
+
+/* portfolio */
+.btn-upload, .btn-reset{width: 3rem;height: 3.75rem;background: #e93232 url(https://static.talented.co.kr/t_img/service_img/img/icon/upload.png) no-repeat 50% 50%/1.333rem auto;border: 0;border-radius: 0 0 2rem 2rem;font-size: 0;line-height: 0;color: transparent;text-indent: -9999em}
+.cover-make{padding: 1.6667rem 2rem;text-align: center;color: #fff;flex-shrink: 0}
+.cover-make .h6{font-weight: 900;margin-bottom: .667rem}
+.cover-make .tip{margin-bottom: 1.5rem;color: #999898;font-size: .917rem;line-height: 1rem}
+.cover-make .tip>span{font-size: .8333rem;color: #e93c3c;border: 1px solid;border-radius: .25rem;line-height: 1rem;width: 2rem;text-align: center;display: inline-block;vertical-align: top;margin-right: .5rem}
+.cover-upload-label{position: relative;display: block;border: 2px dashed #575555;border-radius: 1.667rem;padding-bottom: calc(100% - 4px);background: url(https://static.talented.co.kr/t_img/service_img/img/icon/plus_wh.png) no-repeat 50% 50%/2rem auto}
+.cover-upload-label:before{content: '표지';color: #7c7b7b;font-size: 1.417rem;position: absolute;font-weight: 700;top: 0;margin-top: 6.4%;left: 6.4%}
+.cover-upload{position: relative;border-radius: 1.667rem;overflow: hidden}
+.cover-upload>img{width: 100%}
+.btn-reset{position: absolute;width: 2.667rem;height: 2.667rem;background: rgba(241,239,239,.25) url(https://static.talented.co.kr/t_img/service_img/img/icon/reset.png) no-repeat 50% 50%/1.667rem auto;bottom: 0;right: 6.4%;margin-bottom: 6.4%;border-radius: .6rem}
+.portfolio-control{flex: 1 0 auto;padding: 2.167rem 2rem;border-radius: 1.75rem 1.75rem 0 0;background: #f6f6f6;font-size: 1.167rem;font-weight: 900}
+.portfolio-control-link{display: flex;align-items: center;justify-content: space-between;margin-bottom: 1.833rem}
+.portfolio-control-link:after{content: '';display: block;width: 2.1rem;height: 2.1rem;background: #ddd url(https://static.talented.co.kr/t_img/service_img/img/icon/arr_wh.png) no-repeat 52% 50%/.667rem auto;border-radius: 100%}
+.portfolio-control-link.completed:after{background-color: #212121}
+#gnb [class*=icon-port-]{width: 2.25rem;margin: 0 auto}
+.icon-port-m{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/media.png);background-size: 2.25rem auto}
+.icon-port-v{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/video.png);background-size: 2.25rem auto}
+.icon-port-b{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/b.png);background-size: 1.083rem auto}
+.icon-port-t{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/t.png);background-size: .917rem auto}
+.icon-port-p{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/para.png);background-size: 1.5rem auto}
+.icon-port-o{background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/order_change.png);background-size: 1.5rem auto}
+.nodata{display: flex;height: calc(100vh - 7.333rem);flex-direction: column;align-items: center;justify-content: center;text-align: center;font-weight: 700}
+.nodata>strong{font-size: 1.833rem;display: block;font-weight: 900;margin: 1.25rem auto 1rem}
+.portfolio-image img{max-width: 100%;display: block;margin: 0 auto}
+.media-data{margin-bottom: .5rem;position: relative}
+.icon-media-del{position: absolute;top: 0;left: 0;width: 3rem;height: 3rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/media_x.png)}
+.media-data:last-child{margin-bottom: 0}
+.portfolio-editor{position: fixed;left: 0;right: 0;bottom: 4rem;background: #fff;height: 192px;display: flex;align-items: center;justify-content: center;padding: 2rem}
+.v-editor{text-align: center;font-weight: 700;width: 100%}
+.v-editor .tit{font-size: 1.167rem;font-weight: 900;line-height: 1.417rem;padding-left: 3rem;background: url(https://static.talented.co.kr/t_img/service_img/img/icon/v.png) no-repeat 0 0/auto 1.417rem;display: inline-block;vertical-align: top;margin-bottom: 1.25rem}
+.v-editor .input-group{max-width: 310px;width: 100%;margin: 1.25rem auto 0;height: 2.833rem}
+.v-editor .input-group>.form-control, .b-editor .input-group>.form-control{height: 2.833rem;border-radius: 2rem;background: #f2f2f2;border-color: #eae8e8;padding: .375rem 1.667rem}
+.v-editor .btn{height: 2.8333rem;width: 4.167rem;font-size: 0;line-height: 0;color: transparent !important;text-indent: -9999em;background: #ca4a23 url(https://static.talented.co.kr/t_img/service_img/img/icon/arrow_white.png) no-repeat 50% 50%/1.667rem auto}
+.p-editor{width: 100%;height: 100%}
+.p-editor>textarea{display: block;width: 100%;height: 100%;border: 0;background: none;font-size: 1.167rem}
+.b-editor{padding: 1rem 2rem 2.75rem}
+.b-editor .hd-title-s{text-align: center;margin-bottom: 1rem}
+.b-editor .col-4{margin-bottom: 2rem}
+.b-editor .custom-control-block{padding: 0;height: 100%}
+.b-editor .custom-control-block .bx{display: block;height: 100%;padding: 2rem 0;width: 6.583rem;margin: 0 auto;border-radius: 1.667rem;transition: all .4s}
+.b-editor .custom-control-block .custom-control-label{margin-top: 1.333rem;border: 0;background: #e0e0e0 url(https://static.talented.co.kr/t_img/service_img/img/icon/chk_wh.png) no-repeat 50% 50%/1.25rem auto}
+.b-editor .custom-control-input:checked~.bx{background: #fff;box-shadow: 4px 6px 18px 0px rgba(99, 99, 99, 0.21);color: #e93232}
+.b-editor .custom-control-input:checked~.bx .custom-control-label{background-color: #e93232}
+.b-editor .custom-control-input:checked~.bx .popol-img{opacity:0.5;}
+.b-editor .custom-control-input:checked~.popol-title-text{color: #cccccc}
+.b-editor .popol-title-text{margin: auto;width: 150px;    word-break: break-all;white-space: normal;display: -webkit-box;overflow: hidden;max-height: 4.5em;line-height: 1.5em !important;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.b-editor .input-group{align-items: center;padding-top: 1.25rem}
+.view .portfolio-image{margin: 2.083rem -2rem 0}
+.comment-form{margin-bottom: 1.833rem;border: 1px solid #e5e5e5;border-radius: .5rem;padding: 1.25rem 1.25rem 1rem}
+.comment-form .media-profile{margin-right: 1.25rem}
+.comment-form .input-group{align-items: flex-start}
+.comment-form .form-control{border: 0;padding: .5rem 0;font-size: .917rem}
+.icon-record{width: 1.083rem;height: .75rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/record.png);background-size: 100% auto}
+.comment-wrap .list-group{margin-top: .5rem}
+
+/* audition */
+.article-title{font-size: 1.583rem;font-weight: 900;margin-bottom: 1.667rem}
+.summary-condition{min-height: 8.333rem}
+.summary-condition .h6{font-weight: 900;line-height: 1.333rem}
+.summary-condition .badge{min-width: 1.667rem;height: 1.333rem;padding: 0 .25rem;background: #212121;vertical-align: top;border-radius: .5rem;margin: -.083rem .5rem 0 0;display: inline-flex;align-items: center;justify-content: center}
+.nomember{margin-top: 1.25rem;text-align: center;font-size: .917rem;color: #666}
+.nomember .btn{width: 14.5rem;margin-top: 1.25rem}
+.icon-person{width: .833rem;height: .833rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/person.png)}
+.icon-group{width: 1.333rem;height: .833rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/group.png)}
+.select-filter{margin: 1rem -2rem 1.667rem;white-space: nowrap;padding: 0 1.5rem;overflow-x: auto;font-size: 0}
+.select-filter>.form-control, .select-filter-label{display: inline-block;vertical-align: top;margin-right: .5rem}
+.select-filter-label .form-control{pointer-events: none}
+.select-filter .form-control{width: auto;min-width: 7.833rem;border-radius: 2rem;padding-left: 1.25rem;margin-top: 0}
+.post{padding: .5rem 2rem 1.667rem;border-radius: 0 0 1.75rem 1.75rem;background: #fff;margin-bottom: -1.667rem;position: relative;}
+.btn-content_mod.btn-red{width: 6.083rem;min-width: 0;font-size: .917rem;padding: calc(.333rem + 1px) .333rem .333rem}
+.btn-follow.btn-red{width: 6.083rem;min-width: 0;font-size: .917rem;padding: calc(.333rem + 1px) .333rem .333rem}
+.btn-follow.btn-dark, .btn-follow.btn-primary{width: 6.083rem;min-width: 0;font-size: .917rem;padding: calc(.333rem + 1px) .333rem .333rem}
+.btn.btn-follow .icon-plus-wh{width: .75rem;height: .75rem;margin-left: .3rem}
+.btn-modify.btn-dark, .btn-follow.btn-primary{width: 6.083rem;min-width: 0;font-size: .917rem;padding: calc(.333rem + 1px) .333rem .333rem}
+.view-sect{padding: 1.833rem 0}
+.view-sect .h5{padding-bottom: .833rem;font-weight: 900}
+.view-sect .h5~.h5{padding-top: 2.083rem}
+.data-table{margin-top: .667rem}
+.data-table td{padding: .5rem 0;font-weight: 700;vertical-align: top}
+.data-table .th{color: #7c7c7c;width: 1%;white-space: nowrap;padding-right: 1.667rem}
+.view-image-swiper{overflow: visible;margin: .75rem 0 1.25rem}
+.view-sect .content{padding-top: 1.25rem}
+.view-sect-form{margin-bottom: 1.667rem}
+.view-sect-form .form-control{margin-top: .833rem}
+.view-sect+.hr{margin-top: 1.25rem;margin-bottom: 1.25rem}
+.postup{font-size: .917rem;margin-top: 2.083rem}
+.postup .text-light{margin-right: .5rem}
+.view-chart{max-width: 720px;margin: 0 auto !important}
+.view-chart>[class*=col]{padding: 1.667rem 0}
+.view-chart .badge{display: block;width: 4.333rem;margin: 0 auto 1.667rem;background: #eae9e9;font-size: 1rem;color: #7d7d7d}
+.barchart{display: flex;justify-content: center;align-items: flex-end;font-size: .833rem;font-weight: 700}
+.barchart .progress{width: .5rem;height: 6rem;margin: 0 auto 1rem;background: none;align-items: flex-end}
+.barchart .progress .bar{display: block;width: 100%;background: #d33535;border-radius: .25rem}
+.barchart .graph+.graph{margin-left: .833rem}
+.col-12 .barchart .graph+.graph{margin-left: 1.667rem}
+.piechart{position: relative;width: 5rem;margin: 0 auto;padding-top: 1rem}
+.pie{width: 5rem;height: 5rem}
+.pie svg{width: 100%;height: 100%;transform: rotateZ(-90deg);background: #81909e;border-radius: 50%}
+.pie circle{fill: #81909e;stroke: #d33535;stroke-width: 31.95;stroke-dasharray: 0 100;transition: stroke-dasharray .5s ease}
+.pie-legend{;text-align: center}
+.pie-legend>b{position: absolute;font-size: .833rem;top: calc(50% + .5rem);transform: translateY(-50%)}
+.pie-legend .m{right: 100%;margin-right: .6rem}
+.pie-legend .w{left: 100%;margin-left: .6rem}
+.post-info{padding: 5.417rem 2rem 2.25rem;background: #f6f6f6;text-align: center;color: #5b5b5b;font-weight: 700}
+.post-info-group{margin: 2.25rem 0;display: flex;align-items: center;justify-content: center}
+.post-info-group>*{width: 8.333rem;margin: 0 .333rem}
+.post-info-group .badge{background: #fff;padding: .5rem;color: #5b5b5b;font-weight: 700}
+.desc-inline{display: inline-flex;justify-content: center;vertical-align: top;font-weight: 900;;color: #000}
+.desc-inline dt{padding-right: .667rem;font-weight: 700}
+.btn-submit-post{padding: 0 1rem}
+.btn-submit-post .icon-chk{width: 1.167rem;margin-left: .833rem}
+.view-file{padding-bottom: 10rem}
+.view-file .tit{display: block;margin-bottom: 2.5rem;color: #7c7c7c}
+.file-label{display: inline-block;margin-right: 2.5rem;vertical-align: top;background: none;border: 0}
+.file-label img{height: 4.333rem}
+
+/* applicant */
+.applicant-info{padding-bottom: 1.2rem;border-bottom: 1px solid #e1dfdf}
+.applicant-info .name{font-size: 1.667rem;font-weight: 900}
+.icon-pencil, .icon-pencil-wh{width: 1rem;height: .917rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/pencil.png)}
+.icon-pencil-wh{width: 22px;height: 22px;margin:2px 0 0 0;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/edit_3x.png)}
+.desc-inline-group{margin: 1.667rem 0}
+.desc-inline-group .desc-inline:not(:last-child){margin-right: 2.083rem}
+.icon-heart{width: 1.333rem;height: 1.083rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/heart.png)}
+.applicant-info-meta>div{margin-bottom: .833rem;font-size: 1.083rem}
+.view .nav-tabs .nav-link{padding: 1rem;font-size: 1.167rem}
+.noitem{text-align: center;padding: 4.167rem 0;font-weight: 900}
+.noitem .text-light{padding: 1.583rem 0 2.5rem}
+.noitem .btn{padding-left: 1.667rem;padding-right: 1.667rem}
+.icon-plus-wh{width: 1rem;height: 1rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/plus_wh.png)}
+#profile .content{padding-top: 0}
+#profile .view-sect{padding: 0;margin-top: 2.5rem}
+#profile .view-sect .h5{padding-bottom: 1rem}
+.history-item{position: relative;display: flex;justify-content: flex-start;line-height: 1.5rem;padding-left: 3.5em}
+.history-item+.history-item{margin-top: .5rem}
+.history-item .year{width: 3.5rem;position: absolute;top: 0;left: 0}
+.history-item .item{flex: 1;padding-bottom: .5rem}
+.history-item .icon-link{width: 1.333rem;height: 1.333rem;background: #dcdadb url(https://static.talented.co.kr/t_img/service_img/img/icon/arrow_wh.png) no-repeat 50% 48%/.75rem auto;border-radius: 100%}
+.history-item .icon-link:before{content: '';position: absolute;top: 0;left: 0;right: 0;bottom: 0}
+.icon-mail{width: 3.333rem;height: 3.333rem;margin-right: .5rem;background-image: url(https://static.talented.co.kr/t_img/service_img/img/icon/mail_3x.png)}
+
+#page-loading{position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 1000;background: url(https://static.talented.co.kr/t_img/service_img/img/load.gif) no-repeat 50% 50%/5.833rem auto; width: 100%;height: 100%;background-color: #fff;z-index: 9999;text-align: center;opacity: 0.5;}
+.profile_edit_icon {position: relative;bottom: 2.5rem;left: 3rem;}
+
+/* story */
+.story-li-block {	margin-bottom:56px;}
+.story-image img {	width: 100%;}
+.story-body {	margin-top: 30px;	padding:0 2rem;}
+.story-title {	margin-bottom: 5px;    font-size: 1.333rem;    font-weight: 900;    white-space: nowrap;    text-overflow: ellipsis;    overflow: hidden;}
+.story-sub-title {	margin: 8px 0;    font-size: 0.933rem;    white-space: nowrap;    text-overflow: ellipsis;    overflow: hidden;}
+.category-tag {	font-size: 0.933rem;    font-weight: 700;    border: 1px solid;    padding: 6px 12px;    margin-right: 5px;}
+.category-tag-area {	margin: 15px 0;}

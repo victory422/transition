@@ -18,4 +18,10 @@ public class HomeController {
 		return "go";
 	}
 	
+	@RequestMapping("/talen")
+	public String talen() {
+		System.out.println("/talen");
+		return "talen";
+	}
+	
 }
