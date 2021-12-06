@@ -95,6 +95,7 @@ function getAddr(){
 function fn_check(sido, gungu, dong){
 	var fullKeyWord = "";
 	var siNm = "";
+	var text = "";
 	if(gungu.split(" ").length == 2) {
 	// 일반 경기도 or 불가지역
 		fullKeyWord = gungu.split(" ")[0]+gungu.split(" ")[1]+dong;
@@ -110,24 +111,25 @@ function fn_check(sido, gungu, dong){
 		var arr = map[key];
 		for(var i = 0 ; i < arr.length; i++) {
 			if( key == 'all' && siNm == arr[i]){
-				alert('가능지역입니다. 전지역 가능한 시에 사시네요.');
+				text = '가능지역입니다. 전지역 가능한 시에 사시네요. ㅊㅋㅊㅋ';
 				break;
 			}else if (fullKeyWord == arr[i]) {
 				if(key == 'someDo') {
-					alert('일부가능지역입니다.');
+					text = '일부 가능지역입니다.';
 					break;	
 				}else if(key == 'someNot') {
-					alert('일부가능지역입니다.');
+					text = '일부 불가지역입니다.';
 					break;	
 				}else {
-					alert('모르겠어요..알 것도 같은데말이지');
+					text = '모르겠어요..알 것도 같은데말이지';
 					break;
 				}
 			}else {
-				alert('모르겠어요.. 안될 듯');
+				text = '모르겠어요.. 안될 듯';
 				break;
 			}
 		}
+		alert(text);
 	}
 }
 
