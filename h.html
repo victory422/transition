@@ -56,7 +56,8 @@ function getAddr(){
 	if(record.length > 0 ) {
 		for(var i = 0 ; i < record.length; i++) {
 			document.querySelector("#tableBody").removeChild(record[i]);
-		}	
+		}
+		console.log(map);
 	}
 	
 	
@@ -90,15 +91,6 @@ function getAddr(){
 }
 
 
-function fn_checkAdress(sido, gungu, dong) {
-	var arr = document.querySelectorAll("#tableBody > tr > td > a");
-	for( var i = 0 ; i<arr.length; i++) {
-		console.log(sido + " / " + gungu+ " / " + dong);
-		console.log(map);
-		//arr[i].setAttribute("onclick", "javascript:fn_check('"+sido+"','"+gungu+"','"+dong+"')");
-	}
-	
-}
 
 function fn_check(sido, gungu, dong){
 	var fullKeyWord = "";
@@ -112,7 +104,8 @@ function fn_check(sido, gungu, dong){
 		fullKeyWord = sido+gungu+dong;
 		siNm =sido;
 	}
-	
+	console.log(fullKeyWord);
+	console.log(siNm);
 	for(var key in map) {
 		var arr = map[key];
 		for(var i = 0 ; i < arr.length; i++) {
@@ -129,11 +122,10 @@ function fn_check(sido, gungu, dong){
 				}else {
 					alert('모르겠어요..');
 				}
-			}
+			}else console.log("??"+ arr[i]);
 		}
 		
 	}
-	alert(dong+" 사시는군요 체크하는 로직을 좀 짜볼게요");
 }
 
 
@@ -275,7 +267,7 @@ function makeListJson(jsonStr){
 		
 		document.getElementById("tableBody").innerHTML += htmlStr;
 		document.querySelector(".information_use_wrap").setAttribute("style","display:block");
-		fn_checkAdress(this.siNm,this.sggNm,this.emdNm);
+		//(this.siNm,this.sggNm,this.emdNm);
 	});
 	
 }
