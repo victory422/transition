@@ -84,6 +84,7 @@ function getAddr(){
 function fn_checkAdress(sido, gungu, dong) {
 	var arr = document.querySelectorAll("#tableBody > tr > td > a");
 	for( var i = 0 ; i<arr.length; i++) {
+		console.log(sido + " / " + gungu);
 		arr[i].setAttribute("onclick", "javascript:fn_check('"+dong+"')");
 	}
 	
