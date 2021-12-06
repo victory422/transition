@@ -44,10 +44,8 @@ window.onload = function() {
 	document.addEventListener('onKeyPress', function(event) {
 		console.log(event);
 		console.log(event.keyCode);
-		if(event.keyCode == 13) getAddr();
+		if(window.event.keyCode == 13) alert('hi'); getAddr();
 	}); 
-
-	
 }
 
 function getAddr(){
