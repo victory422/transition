@@ -51,6 +51,12 @@ window.onload = function() {
 }
 
 function getAddr(){
+	// 초기화
+	var record = document.querySelectorAll("#tableBody > tr");
+	for(var i = 0 ; i < record.length; i++) {
+		document.querySelector("#tableBody).removeChild(record[i]);
+	}
+	
 	// 적용예 (api 호출 전에 검색어 체크) 	
 	if (!checkSearchedWord(document.form.keyword)) {
 		return ;
@@ -96,8 +102,8 @@ function fn_check(sido, gungu, dong){
 	var siNm = "";
 	if(gungu.split(" ").length == 2) {
 	// 일반 경기도 or 불가지역
-		fullKeyWord = gungu.split[" "][0]+gungu.split[" "][1]+dong;
-		siNm = gungu.split[" "][0];
+		fullKeyWord = gungu.split(" ")[0]+gungu.split(" ")[1]+dong;
+		siNm = gungu.split(" ")[0];
 	}else if(gungu.split(" ").length == 1) {
 	// 특별시, 광역시
 		fullKeyWord = sido+gungu+dong;
