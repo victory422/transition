@@ -96,14 +96,21 @@ function fn_check(sido, gungu, dong){
 	var fullKeyWord = "";
 	var siNm = "";
 	var text = "";
+	console.log(gungu);
 	if(gungu.split(" ").length == 2) {
 	// 일반 경기도 or 불가지역
 		fullKeyWord = gungu.split(" ")[0]+gungu.split(" ")[1]+dong;
 		siNm = gungu.split(" ")[0];
 	}else if(gungu.split(" ").length == 1) {
-	// 특별시, 광역시
-		fullKeyWord = sido+gungu+dong;
-		siNm =sido;
+	// 특별시, 광역시, 구가 없는 시
+		if( sido == '경기도' || sido == '강원도' || sido == '충청남도' || sido == '충청북도' || sido == '전라남도' || sido == '전라북도' || sido == '경상북도' || sido == '경상남도'|| sido == '제주도'){
+			fullKeyWord = gungu+dong;
+			siNm =gungu;
+		}else {
+			fullKeyWord = sido+gungu+dong;
+			siNm =sido;	
+		}
+		
 	}
 	console.log(fullKeyWord);
 	console.log(siNm);
@@ -112,14 +119,17 @@ function fn_check(sido, gungu, dong){
 		for(var i = 0 ; i < arr.length; i++) {
 			if( key == 'all' && siNm == arr[i]){
 				text = '가능지역입니다. 전지역 가능한 시에 사시네요. ㅊㅋㅊㅋ';
-				break;
+				alert(text);
+				return ;
 			}else if (fullKeyWord == arr[i]) {
 				if(key == 'someDo') {
 					text = '일부 가능지역입니다.';
-					break;	
+					alert(text);
+					return ;
 				}else if(key == 'someNot') {
 					text = '일부 불가지역입니다.';
-					break;	
+					alert(text);
+					return ;
 				}else {
 					text = '모르겠어요..알 것도 같은데말이지';
 				}
