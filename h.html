@@ -53,9 +53,12 @@ window.onload = function() {
 function getAddr(){
 	// 초기화
 	var record = document.querySelectorAll("#tableBody > tr");
-	for(var i = 0 ; i < record.length; i++) {
-		document.querySelector("#tableBody).removeChild(record[i]);
+	if(record.length > 0 ) {
+		for(var i = 0 ; i < record.length; i++) {
+			document.querySelector("#tableBody).removeChild(record[i]);
+		}	
 	}
+	
 	
 	// 적용예 (api 호출 전에 검색어 체크) 	
 	if (!checkSearchedWord(document.form.keyword)) {
