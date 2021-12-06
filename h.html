@@ -40,6 +40,15 @@ input[type=text] {
 var g_roadAddr = "";
 var g_dong = "";
 
+window.onload = function() {
+	document.addEventListener('onKeyPress', function(event) {
+		
+		if(event.keyCode == 13) getAddr();
+	}); 
+
+	
+}
+
 function getAddr(){
 	// 적용예 (api 호출 전에 검색어 체크) 	
 	if (!checkSearchedWord(document.form.keyword)) {
@@ -71,10 +80,10 @@ function getAddr(){
 }
 
 
-function fn_checkAdress(val) {
+function fn_checkAdress(sido, gungu, dong) {
 	var arr = document.querySelectorAll("#tableBody > tr > td > a");
 	for( var i = 0 ; i<arr.length; i++) {
-		arr[i].setAttribute("onclick", "javascript:fn_check('"+val+"')");
+		arr[i].setAttribute("onclick", "javascript:fn_check('"+dong+"')");
 	}
 	
 }
@@ -99,7 +108,7 @@ function makeListJson(jsonStr){
 		
 		document.getElementById("tableBody").innerHTML += htmlStr;
 		document.querySelector(".information_use_wrap").setAttribute("style","display:block");
-		fn_checkAdress(this.emdNm);
+		fn_checkAdress(this.siNm,this.sggNm,this.emdNm);
 	});
 	
 }
@@ -154,12 +163,12 @@ function enterSearch() {
 	<input type="hidden" name="resultType" value="json"/> <!-- 요청 변수 설정 (검색결과형식 설정, json) --> 
 	<input type="hidden" name="confmKey" value="U01TX0FVVEgyMDIxMTEyNjE4MTM0NzExMTk1OTU="/><!-- 요청 변수 설정 (승인키) -->
 	<input type="text" name="keyword" value="" onkeydown="enterSearch();"/><!-- 요청 변수 설정 (키워드) -->
-	<input type="button" onClick="getAddr();" value="주소검색하기"/>
+	<input type="button" id="input_search" onClick="getAddr();" value="주소검색하기"/>
 	<div id="list" ></div><!-- 검색 결과 리스트 출력 영역 -->
 </form>
 
 <div class="container" >
-	<div class="contents" id="contents">
+	<div class="contents" id="contents" style="background-color:#fff;">
             <div class="content">
                 <div class="body">
                     <div class="body_content_wrap">
