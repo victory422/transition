@@ -94,11 +94,11 @@ function fn_checkAdress(sido, gungu, dong) {
 function fn_check(sido, gungu, dong){
 	var fullKeyWord = "";
 	var siNm = "";
-	if(gungu.split[" "].length == 2) {
+	if(gungu.split(" ").length == 2) {
 	// 일반 경기도 or 불가지역
 		fullKeyWord = gungu.split[" "][0]+gungu.split[" "][1]+dong;
 		siNm = gungu.split[" "][0];
-	}else if(gungu.split[" "].length == 1) {
+	}else if(gungu.split(" ").length == 1) {
 	// 특별시, 광역시
 		fullKeyWord = sido+gungu+dong;
 		siNm =sido;
