@@ -41,11 +41,8 @@ var g_roadAddr = "";
 var g_dong = "";
 
 window.onload = function() {
-	document.addEventListener('onKeyPress', function(event) {
-		console.log(event);
-		console.log(event.keyCode);
-		if(window.event.keyCode == 13) alert('hi'); getAddr();
-	}); 
+
+	
 }
 
 function getAddr(){
@@ -318,8 +315,8 @@ function checkSearchedWord(obj){
 }
 
 function enterSearch() {
-	var evt_code = (window.netscape) ? ev.which : event.keyCode;
-	if (evt_code == 13) {    
+	
+	if (event.keyCode == 13) {    
 		event.keyCode = 0;  
 		getAddr(); 
 	} 
@@ -334,7 +331,7 @@ function enterSearch() {
 	<input type="hidden" name="countPerPage" value="10"/><!-- 요청 변수 설정 (페이지당 출력 개수. countPerPage 범위 : 0 < n <= 100) -->
 	<input type="hidden" name="resultType" value="json"/> <!-- 요청 변수 설정 (검색결과형식 설정, json) --> 
 	<input type="hidden" name="confmKey" value="U01TX0FVVEgyMDIxMTEyNjE4MTM0NzExMTk1OTU="/><!-- 요청 변수 설정 (승인키) -->
-	<input type="text" name="keyword" value="" onkeydown="getAddr();"/><!-- 요청 변수 설정 (키워드) -->
+	<input type="text" name="keyword" value="" onkeydown="javascript:enterSearch()"/><!-- 요청 변수 설정 (키워드) -->
 	<input type="button" id="input_search" onClick="getAddr();" value="주소검색하기"/>
 	<div id="list" ></div><!-- 검색 결과 리스트 출력 영역 -->
 </form>
