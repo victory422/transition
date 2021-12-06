@@ -233,7 +233,7 @@ function makeListJson(jsonStr){
 		console.log($(jsonStr.results.juso));
 		htmlStr += "<tr>";
 		htmlStr += "<td>"+this.liNm+"</td>";
-		htmlStr += "<td><a style='cursor:pointer' onclick='javascript:fn_check("'+sido+'","'+gungu+'","'+dong+'")'>"+this.roadAddr+"</td>";
+		htmlStr += "<td><a style='cursor:pointer' onclick='javascript:fn_check("'+this.siNm+'","'+this.sggNm+'","'+this.emdNm+'")'>"+this.roadAddr+"</td>";
 		htmlStr += "<tr>";
 		
 		document.getElementById("tableBody").innerHTML += htmlStr;
