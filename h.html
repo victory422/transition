@@ -57,7 +57,7 @@ function getAddr(){
 		for(var i = 0 ; i < record.length; i++) {
 			document.querySelector("#tableBody").removeChild(record[i]);
 		}
-		console.log(map);
+		//console.log(map);
 	}
 	
 	
@@ -96,7 +96,7 @@ function fn_check(sido, gungu, dong){
 	var fullKeyWord = "";
 	var siNm = "";
 	var text = "";
-	console.log(gungu);
+	
 	if(gungu.split(" ").length == 2) {
 	// 일반 경기도 or 불가지역
 		fullKeyWord = gungu.split(" ")[0]+gungu.split(" ")[1]+dong;
@@ -112,29 +112,28 @@ function fn_check(sido, gungu, dong){
 		}
 		
 	}
-	console.log(fullKeyWord);
-	console.log(siNm);
+
 	for(var key in map) {
 		var arr = map[key];
 		for(var i = 0 ; i < arr.length; i++) {
 			if( key == 'all' && siNm == arr[i]){
-				text = '가능지역입니다. 전지역 가능한 시에 사시네요. ㅊㅋㅊㅋ';
+				text = '새벽배송 가능지역입니다.';
 				alert(text);
 				return ;
 			}else if (fullKeyWord == arr[i]) {
 				if(key == 'someDo') {
-					text = '일부 가능지역입니다.';
+					text = '새벽배송 일부 가능지역입니다.';
 					alert(text);
 					return ;
 				}else if(key == 'someNot') {
-					text = '일부 불가지역입니다.';
+					text = '새벽배송 일부 가능지역입니다.';
 					alert(text);
 					return ;
 				}else {
-					text = '모르겠어요..알 것도 같은데말이지';
+					text = '새벽배송 불가능 지역입니다.';
 				}
 			}else {
-				text = '모르겠어요.. 안될 듯';
+				text = '새벽배송 불가능 지역입니다.';
 			}
 		}
 	}
@@ -274,7 +273,7 @@ var map = {"all":[
 function makeListJson(jsonStr){
 	var htmlStr = "";
 	$(jsonStr.results.juso).each(function(){
-		console.log($(jsonStr.results.juso));
+		//console.log($(jsonStr.results.juso));
 		htmlStr += "<tr>";
 		htmlStr += "<td>"+this.liNm+"</td>";
 		htmlStr += "<td><a style='cursor:pointer' onclick='javascript:fn_check(\""+this.siNm+"\",\""+this.sggNm+"\",\""+this.emdNm+"\")'>"+this.roadAddr+"</td>";
