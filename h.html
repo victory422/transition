@@ -30,7 +30,7 @@ input[type=text] {
 
 </style>
 
-<script type="text/JavaScript" src="./jquery-1.8.3.min.js" ></script>
+<script type="text/JavaScript" src="./jquery.min.js" ></script>
 <script type="text/JavaScript" src="./rData.js" ></script>
 
 <script language="javascript">
@@ -49,6 +49,10 @@ console.log(document.getElementById("inputBox"));
 }
 
 function getAddr(){
+	if ( document.getElementById("inputBox").value == "" ) {
+		 document.getElementById("inputBox").value = document.getElementById("rr").value;
+	}
+	
 	// 초기화
 	var record = document.querySelectorAll("#tableBody > tr");
 	if(record.length > 0 ) {
@@ -146,6 +150,7 @@ function fn_check(sido, gungu, dong){
 
 
 function fn_check_code(sido, gungu, dong, code){
+	console.log(code);
 	var fullKeyWord = "";
 	var siNm = "";
 	var text = "";
@@ -267,18 +272,17 @@ function fn_check_code(sido, gungu, dong, code){
 	var hardlyGetData = mSet(arr_arr(sTemp, fTemp));
 	console.log(hardlyGetData);
 	for(var x = 0 ; x < hardlyGetData.length; x++ ) {
-		if ( code == hardlyGetData[i] ) {
+		if ( code == hardlyGetData[x] ) {
 			alert('배송가능 어려울 뻔 했지만 특별히 해준다');
 			return;
-		} else {
-			alert('죄송합니다. 배송가능 지역이 아닙니다.');
-			return;
-			
 		}
 	}
 	
 	// 복잡한 일부 불가지역 로직.. end
-	
+	 
+	//여기까지 오다니... 안돼
+	alert('죄송합니다. 배송가능 지역이 아닙니다.');
+	return;
 	
 }
 
