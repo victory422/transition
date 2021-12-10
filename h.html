@@ -1,5 +1,4 @@
-
-
+<%@ page language="java" contentType="text/html;charset=UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -32,21 +31,21 @@ input[type=text] {
 
 </style>
 
-<link rel="stylesheet" href="./base.css">
-<link rel="stylesheet" href="./common.css">
-<script type="text/JavaScript" src="./jquery-1.8.3.min.js" ></script>
+<script type="text/JavaScript" src="./jquery.min.js" ></script>
+<script type="text/JavaScript" src="./rData.js" ></script>
 
 <script language="javascript">
 var g_roadAddr = "";
 var g_dong = "";
 
 window.onload = function() {
-
-	document.getElementById("inputBox").addEventListener("onkeydown", function(){
-
-		if (event.keyCode == 13) {    
-			getAddr(); 
-		} 
+console.log(document.getElementById("inputBox"));
+	document.getElementById("input_search").addEventListener("onmouseover", function(e){
+		alert(e.keyCode);
+		if (e.keyCode == 13) {
+			document.getElementById("input_search").click;
+		}
+		
 	});
 }
 
@@ -126,11 +125,17 @@ function fn_check(sido, gungu, dong){
 					alert(text);
 					return ;
 				}else if(key == 'someNot') {
-					text = '새벽배송 일부 가능지역입니다.';
+					text = '새벽배송 불가능 지역입니다.';
+					alert(text);
+					return ;
+				}else if(key == 'someNot' && (
+						fullKeyWord.indexOf("인천광역시")>-1 || fullKeyWord.indexOf("성남시")>-1 || fullKeyWord.indexOf("안산시")>-1 || fullKeyWord.indexOf("용인시")>-1    
+						)){
+					text = '새벽배송 가능지역입니다.';
 					alert(text);
 					return ;
 				}else {
-					text = '새벽배송 불가능 지역입니다.';
+					text = '여기 오는 경우 찾아봅시다.';
 				}
 			}else {
 				text = '새벽배송 불가능 지역입니다.';
@@ -141,142 +146,173 @@ function fn_check(sido, gungu, dong){
 }
 
 
+function fn_check_code(sido, gungu, dong, code){
+	var fullKeyWord = "";
+	var siNm = "";
+	var text = "";
+	var temp = "";
+	var sTemp= [];
+	var fTemp= [];
+	for( var i = 0 ; i < allCan.length; i ++) {
+		var tm = Array.from(allCan[i]); 
+		for(var j = tm.length-1 ; j >= 0 ; j--) {
+			if(tm[j] == '0') {
+				tm.pop();
+			}else {
+				temp = tm.join('');
+				break;
+			}
+			
+		}
+		
+		if(code.substr(0,temp.length) == temp) {
+			console.log("all");
+			alert("전지역 배송가능한 지역 서울부터 의정부까지 지정해놓은 시");
+			return;
+		}
+	}
 	
-var map = {"all":[
-		"서울특별시"
-		,"안양시"
-		,"군포시"
-		,"부천시"
-		,"의왕시"
-		,"과천시"
-		,"수원시"
-		,"광명시"
-		,"구리시"
-		,"의정부시"
-		],
-	"someNot":[
-		'성남시분당구석운동'
-		,'성남시분당구율동'
-		,'성남시분당구하산운동'
-		,'성남시분당구대장동'
-		,'성남시분당구동원동'
-		,'성남시수정구고등동'
-		,'성남시수정구금토동'
-		,'성남시수정구상적동'
-		,'성남시중원구갈현동'
-		,'용인시처인구'
-		,'안산시상록구안산동'
-		,'안산시단원구대부도'
-		,'안산시단원구반월공단'
-		,'안산시상록구수암동'
-		,'안산시상록구장상동'
-		,'안산시단원구화정동'
-		,'인천광역시중구운서동'
-		,'인천광역시중구운남동'
-		,'인천광역시중구영종'
-		,'인천광역시중구강화군'
-	], 
-	"someDo":[
-	'고양시일산서구가좌동'
-	,'고양시일산서구덕이동'
-	,'고양시일산서구대화동'
-	,'고양시일산서구일산동'
-	,'고양시일산서구주엽동'
-	,'고양시일산서구탄현동'
-	,'고양시일산동구마두동'
-	,'고양시일산동구백석동'
-	,'고양시일산동구식사동'
-	,'고양시일산동구장항동'
-	,'고양시일산동구정발산동'
-	,'고양시일산동구중산동'
-	,'고양시일산동구풍동'
-	,'고양시일산동구풍산동'
-	,'고양시덕양구행신동'
-	,'고양시덕양구도내동'
-	,'고양시덕양구화정동'
-	,'고양시덕양구능곡동'
-	,'고양시덕양구성사동'
-	,'고양시덕양구주교동'
-	,'고양시덕양구토당동'
-	,'고양시덕양구화전동'
-	,'고양시덕양구대장동'
-	,'고양시덕양구삼송지구'
-	,'고양시덕양구원흥동'
-	,'고양시덕양구삼송동'
-	,'고양시덕양구창릉동'
-	,'고양시덕양구동산동'
-	,'파주시동패동'
-	,'파주시와동동'
-	,'파주시목동동'
-	,'파주시다율동'
-	,'파주시야당동'
-	,'파주시운정지구'
-	,'파주시금촌동'
-	,'인천광역시서구가정동'
-	,'인천광역시서구검단동'
-	,'인천광역시서구감암동'
-	,'인천광역시서구경서동'
-	,'인천광역시서구금곡동'
-	,'인천광역시서구당하동'
-	,'인천광역시서구대곡동'
-	,'인천광역시서구마전동'
-	,'인천광역시서구백석동'
-	,'인천광역시서구불로동'
-	,'인천광역시서구석남동'
-	,'인천광역시서구신현동'
-	,'인천광역시서구심곡동'
-	,'인천광역시서구연희동'
-	,'인천광역시서구왕길동'
-	,'인천광역시서구원당동'
-	,'인천광역시서구청라동'
-	,'인천광역시서구가좌동'
-	,'화성시기산동'
-	,'화성시능동'
-	,'화성시동탄동'
-	,'화성시반송동'
-	,'화성시반월동'
-	,'화성시병점동'
-	,'화성시석우동'
-	,'화성시영천동'
-	,'화성시오산동'
-	,'화성시진안동'
-	,'화성시청계동'
-	,'화성시송동'
-	,'화성시목동동'
-	,'화성시방교동'
-	,'화성시산척동'
-	,'화성시장지동'
-	,'김포시감정동'
-	,'김포시걸포동'
-	,'김포시고촌읍'
-	,'김포시구래동'
-	,'김포시김포동'
-	,'김포시마산동'
-	,'김포시북변동'
-	,'김포시사우동'
-	,'김포시운양동'
-	,'김포시장기동'
-	,'김포시풍무동'
-	,'하남시신장동'
-	,'하남시덕풍동'
-	,'하남시풍산동'
-	,'하남시창우동'
-	,'하남시망월동'
-	,'하남시미사지구'
-	,'하남시위례신도시'
-	,'하남시학암동'
-	,'하남시선동'
-	,'남양주시다산동'
-	,'남양주시별내동'
-	]};
+	for( var i = 0 ; i < someCan.length; i ++) {
+		var tm = Array.from(someCan[i]); 
+		for(var j = tm.length-1 ; j >= 0 ; j--) {
+			if(tm[j] == '0') {
+				tm.pop();
+			}else {
+				temp = tm.join('');
+				break;
+			}
+			
+		}
+		
+		if(code.substr(0,temp.length) == temp) {
+			console.log("someCan");
+			alert("일부 배송가능한 지역으로 지정된 곳");
+			return;
+		}
+	}
+	
+	
+	// 복잡한 일부 불가지역 로직..
+	var allData = [];
+		
+	for( var j = 0 ; j < allDataList.length; j++) {
+		var sStr =allDataList[j].substr(0,2); 
+		if(
+				sStr != "26" && 
+				sStr != "27" &&
+				sStr != "30" &&
+				sStr != "31" &&
+				sStr != "42" &&
+				sStr != "43" &&
+				sStr != "44" &&
+				sStr != "45" &&
+				sStr != "46" &&
+				sStr != "47" &&
+				sStr != "48" &&
+				sStr != "50"
+			) {
+			allData.push(allDataList[j]);
+		}
+	}
+
+	
+	for( var i = 0 ; i < someNot.length; i ++) {
+		var arr = Array.from(someNot[i]);
+		var tm = someNot[i];
+		var temp = "";
+		for(var j = arr.length-1 ; j >= 0 ; j--) {
+			if(arr[j] == '0') {
+				arr.pop();
+			}else {
+				temp = arr.join('');
+				break;
+			}
+		}
+		 // temp :: 뒤 0으로 붙어오는 숫자들 잘라낸 숫자
+		
+		if(temp.length == 5) { // 5일 땐 도-시-구 까지의 데이터
+			var ttemp =[];
+			for( var j = 0 ; j < allData.length; j++) {
+				var jm = allData[j];
+				if( tm.substr(0,4) == jm.substr(0,4) ) {
+						sTemp.push(jm);
+					if( tm.substr(0,5) == jm.substr(0,5) ) {
+						fTemp.push(jm);
+					}
+				}
+			}
+		}
+		console.log(mSet(sTemp));
+		console.log(mSet(fTemp));
+
+		
+		if(temp.length == 8) { // 8일 땐 도-시-구-동 까지의 데이터
+			for( var j = 0 ; j < allData.length; j++) {
+				var jm = allData[j];
+				if( tm.substr(0,5) == jm.substr(0,5)  ) {
+					if( tm.substr(0,8) != jm.substr(0,8) ) {
+						sTemp.push(jm);
+						if( jm == '4113511700 ') alert();
+					}else {
+						fTemp.push(jm);
+					}
+				}
+			}
+		}
+		
+		console.log(mSet(sTemp));
+		console.log(mSet(fTemp));
+		
+	}
+	
+	var hardlyGetData = mSet(arr_arr(sTemp, fTemp));
+	console.log(hardlyGetData);
+	for(var x = 0 ; x < hardlyGetData.length; x++ ) {
+		if ( code == hardlyGetData[i] ) {
+			alert('배송가능 어려울 뻔 했지만 특별히 해준다');
+			return;
+		} else {
+			alert('죄송합니다. 배송가능 지역이 아닙니다.');
+			return;
+			
+		}
+	}
+	
+	// 복잡한 일부 불가지역 로직.. end
+	
+	
+}
+
+
+function mSet(array) {
+	var set = new Set(array);
+	var resArr = [...set];
+	
+	return resArr;
+}
+
+
+function arr_arr(arr1, arr2) {
+	
+	for(var i = 0 ; i < arr1.length; i ++) {
+		for( var j = 0 ; j < arr2.length; j++ ) {
+			if( arr1[i] == arr2[j]) {
+				delete arr1[i];
+			}
+		}
+	}
+	
+	return arr1;
+}
+
 
 function makeListJson(jsonStr){
 	var htmlStr = "";
 	$(jsonStr.results.juso).each(function(){
-		//console.log($(jsonStr.results.juso));
+		console.log($(jsonStr.results.juso));
 		htmlStr += "<tr>";
 		htmlStr += "<td>"+this.liNm+"</td>";
-		htmlStr += "<td><a style='cursor:pointer' onclick='javascript:fn_check(\""+this.siNm+"\",\""+this.sggNm+"\",\""+this.emdNm+"\")'>"+this.roadAddr+"</td>";
+		htmlStr += "<td><a style='cursor:pointer' onclick='javascript:fn_check_code(\""+this.siNm+"\",\""+this.sggNm+"\",\""+this.emdNm+"\",\""+this.admCd+"\")'>"+this.roadAddr+"</td>";
 		htmlStr += "<tr>";
 		
 		document.getElementById("tableBody").innerHTML += htmlStr;
@@ -317,27 +353,26 @@ function checkSearchedWord(obj){
 	}
 	return true ;
 }
-
-function enterSearch(event) {
-	alert('hi');
-	if (event.keyCode == 13) {    
-		event.keyCode = 0;  
-		getAddr(); 
-	} 
+function fn_test(e, dom) {
+	if ( e.keyCode == 13 ) {
+		document.getElementById("inputBox").value = dom.value;
+		document.getElementById("input_search").click();
+	}
 }
 
 </script>
 <title>Insert title here</title>
 </head>
 <body>
-<form name="form" id="form" method="post">
+<form name="form" id="form" method="get">
 	<input type="hidden" name="currentPage" value="1"/> <!-- 요청 변수 설정 (현재 페이지. currentPage : n > 0) -->
 	<input type="hidden" name="countPerPage" value="10"/><!-- 요청 변수 설정 (페이지당 출력 개수. countPerPage 범위 : 0 < n <= 100) -->
 	<input type="hidden" name="resultType" value="json"/> <!-- 요청 변수 설정 (검색결과형식 설정, json) --> 
 	<input type="hidden" name="confmKey" value="U01TX0FVVEgyMDIxMTEyNjE4MTM0NzExMTk1OTU="/><!-- 요청 변수 설정 (승인키) -->
 	<div align="center" style="margin-top:100px;">
-		<input type="text" id="inputBox" name="keyword" value="" style="height: 50px;
-    font-size: 30px;"/><!-- 요청 변수 설정 (키워드) -->
+		<input type="text" id="inputBox" name="keyword" value="" style="display:none; " /><!-- 요청 변수 설정 (키워드) -->
+    <input type="text" id="rr" name="keyword" value="" style="height: 50px;
+    font-size: 30px;" onKeyDown="javascript:fn_test(event, this)"/><!-- 요청 변수 설정 (키워드) -->
 		<input type="button" id="input_search" onClick="getAddr();" value="주소검색하기"/>
 	</div>
 	<div id="list" ></div><!-- 검색 결과 리스트 출력 영역 -->
@@ -375,5 +410,3 @@ function enterSearch(event) {
                             
 </body>
 </html>
-
-
