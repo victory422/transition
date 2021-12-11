@@ -49,9 +49,7 @@ console.log(document.getElementById("inputBox"));
 }
 
 function getAddr(){
-	if ( document.getElementById("inputBox").value == "" ) {
-		 document.getElementById("inputBox").value = document.getElementById("rr").value;
-	}
+	 document.getElementById("inputBox").value = document.getElementById("rr").value;
 	
 	// 초기화
 	var record = document.querySelectorAll("#tableBody > tr");
@@ -93,62 +91,6 @@ function getAddr(){
 }
 
 
-
-function fn_check(sido, gungu, dong){
-	var fullKeyWord = "";
-	var siNm = "";
-	var text = "";
-	
-	if(gungu.split(" ").length == 2) {
-	// 일반 경기도 or 불가지역
-		fullKeyWord = gungu.split(" ")[0]+gungu.split(" ")[1]+dong;
-		siNm = gungu.split(" ")[0];
-	}else if(gungu.split(" ").length == 1) {
-	// 특별시, 광역시, 구가 없는 시
-		if( sido == '경기도' || sido == '강원도' || sido == '충청남도' || sido == '충청북도' || sido == '전라남도' || sido == '전라북도' || sido == '경상북도' || sido == '경상남도'|| sido == '제주도'){
-			fullKeyWord = gungu+dong;
-			siNm =gungu;
-		}else {
-			fullKeyWord = sido+gungu+dong;
-			siNm =sido;	
-		}
-		
-	}
-
-	for(var key in map) {
-		var arr = map[key];
-		for(var i = 0 ; i < arr.length; i++) {
-			if( key == 'all' && siNm == arr[i]){
-				text = '새벽배송 가능지역입니다.';
-				alert(text);
-				return ;
-			}else if (fullKeyWord == arr[i]) {
-				if(key == 'someDo') {
-					text = '새벽배송 일부 가능지역입니다.';
-					alert(text);
-					return ;
-				}else if(key == 'someNot') {
-					text = '새벽배송 불가능 지역입니다.';
-					alert(text);
-					return ;
-				}else if(key == 'someNot' && (
-						fullKeyWord.indexOf("인천광역시")>-1 || fullKeyWord.indexOf("성남시")>-1 || fullKeyWord.indexOf("안산시")>-1 || fullKeyWord.indexOf("용인시")>-1    
-						)){
-					text = '새벽배송 가능지역입니다.';
-					alert(text);
-					return ;
-				}else {
-					text = '여기 오는 경우 찾아봅시다.';
-				}
-			}else {
-				text = '새벽배송 불가능 지역입니다.';
-			}
-		}
-	}
-	alert(text);
-}
-
-
 function fn_check_code(sido, gungu, dong, code){
 	console.log(code);
 	var fullKeyWord = "";
@@ -177,18 +119,28 @@ function fn_check_code(sido, gungu, dong, code){
 	}
 	
 	for( var i = 0 ; i < someCan.length; i ++) {
+	/*
 		var tm = Array.from(someCan[i]); 
 		for(var j = tm.length-1 ; j >= 0 ; j--) {
 			if(tm[j] == '0') {
 				tm.pop();
 			}else {
 				temp = tm.join('');
+				console.log(temp);
 				break;
 			}
 			
 		}
 		
 		if(code.substr(0,temp.length) == temp) {
+			console.log("someCan");
+			alert("일부 배송가능한 지역으로 지정된 곳");
+			return;
+		}
+	*/
+	console.log(code);
+	console.log(someCan[i]);
+		if(code == someCan[i] ) {
 			console.log("someCan");
 			alert("일부 배송가능한 지역으로 지정된 곳");
 			return;
@@ -312,16 +264,16 @@ function arr_arr(arr1, arr2) {
 function makeListJson(jsonStr){
 	var htmlStr = "";
 	$(jsonStr.results.juso).each(function(){
-		console.log($(jsonStr.results.juso));
+		//console.log($(jsonStr.results.juso));
 		htmlStr += "<tr>";
 		htmlStr += "<td></td>";
 		htmlStr += "<td><a style='cursor:pointer' onclick='javascript:fn_check_code(\""+this.siNm+"\",\""+this.sggNm+"\",\""+this.emdNm+"\",\""+this.admCd+"\")'>"+this.roadAddr+"</td>";
 		htmlStr += "<tr>";
 		
-		document.getElementById("tableBody").innerHTML += htmlStr;
-		document.querySelector(".information_use_wrap").setAttribute("style","display:block");
 		//(this.siNm,this.sggNm,this.emdNm);
 	});
+		document.getElementById("tableBody").innerHTML += htmlStr;
+		document.querySelector(".information_use_wrap").setAttribute("style","display:block");
 	
 }
 
@@ -369,7 +321,7 @@ function fn_test(e, dom) {
 <body>
 <form name="form" id="form" method="get">
 	<input type="hidden" name="currentPage" value="1"/> <!-- 요청 변수 설정 (현재 페이지. currentPage : n > 0) -->
-	<input type="hidden" name="countPerPage" value="10"/><!-- 요청 변수 설정 (페이지당 출력 개수. countPerPage 범위 : 0 < n <= 100) -->
+	<input type="hidden" name="countPerPage" value="100"/><!-- 요청 변수 설정 (페이지당 출력 개수. countPerPage 범위 : 0 < n <= 100) -->
 	<input type="hidden" name="resultType" value="json"/> <!-- 요청 변수 설정 (검색결과형식 설정, json) --> 
 	<input type="hidden" name="confmKey" value="U01TX0FVVEgyMDIxMTEyNjE4MTM0NzExMTk1OTU="/><!-- 요청 변수 설정 (승인키) -->
 	<div align="center" style="margin-top:100px;">
