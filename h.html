@@ -21,11 +21,22 @@
 /* 본문 배경색(짝수) */
 .pop-address-search .pop-address-search-inner .result table.data-col tbody tr:nth-child(even) td {background:#FFFFFF}
 						
-input[type=text] {
-    min-width: 234px;
-    font-size: 13px;
+.search {
+    min-width: 350px;
+    height: 150px;
+    font-size: 70px;
+    width: 60%;
+    height: 100px;
     line-height: 2.714em;
     border: 1px solid #d9d9d9;
+ }
+ 
+ .searchBtn {
+ 	margin-left : 20px;
+ 	font-size : 30px;
+ 	height : 100px;
+ 
+ 
  }					
 
 </style>
@@ -38,18 +49,11 @@ var g_roadAddr = "";
 var g_dong = "";
 
 window.onload = function() {
-console.log(document.getElementById("inputBox"));
-	document.getElementById("input_search").addEventListener("onmouseover", function(e){
-		alert(e.keyCode);
-		if (e.keyCode == 13) {
-			document.getElementById("input_search").click;
-		}
-		
-	});
+	document.getElementById("search").focus();
 }
 
 function getAddr(){
-	 document.getElementById("inputBox").value = document.getElementById("rr").value;
+	 document.getElementById("inputBox").value = document.getElementById("search").value;
 	
 	// 초기화
 	var record = document.querySelectorAll("#tableBody > tr");
@@ -196,8 +200,8 @@ function fn_check_code(sido, gungu, dong, code){
 					}
 				}
 			}
-			console.log(mSet(sTemp));
-			console.log(mSet(fTemp));
+			//console.log(mSet(sTemp));
+			//console.log(mSet(fTemp));
 		}
 
 		
@@ -212,8 +216,8 @@ function fn_check_code(sido, gungu, dong, code){
 					}
 				}
 			}
-			console.log(mSet(sTemp));
-			console.log(mSet(fTemp));
+			//console.log(mSet(sTemp));
+			//console.log(mSet(fTemp));
 		}
 		
 		
@@ -266,16 +270,21 @@ function makeListJson(jsonStr){
 		temp.push(jsonStr.results.juso);
 		//console.log($(jsonStr.results.juso));
 		htmlStr += "<tr>";
-		htmlStr += "<td></td>";
-		htmlStr += "<td><a style='cursor:pointer' onclick='javascript:fn_check_code(\""+this.siNm+"\",\""+this.sggNm+"\",\""+this.emdNm+"\",\""+this.admCd+"\")'>"+this.roadAddr+"</td>";
+		//htmlStr += "<td></td>";
+		htmlStr += "<td><a style='' onclick='javascript:fn_check_code(\""+this.siNm+"\",\""+this.sggNm+"\",\""+this.emdNm+"\",\""+this.admCd+"\")'>"+this.roadAddr+"</td>";
 		htmlStr += "<tr>";
 		
 		//(this.siNm,this.sggNm,this.emdNm);
 	});
-		console.log(mSet(temp));
+		//console.log(mSet(temp));
 		document.getElementById("tableBody").innerHTML += htmlStr;
 		document.querySelector(".information_use_wrap").setAttribute("style","display:block");
-	
+		var td = document.getElementById("tableBody").querySelectorAll("tr > td > a");
+		var styles = "cursor:pointer;font-size:30px;";    
+
+		for(var i = 0 ; i < td.length; i ++) {
+			td[i].setAttribute("style", styles);
+		}
 }
 
 //특수문자, 특정문자열(sql예약어의 앞뒤공백포함) 제거
@@ -309,7 +318,7 @@ function checkSearchedWord(obj){
 	}
 	return true ;
 }
-function fn_test(e, dom) {
+function fn_keyDown(e, dom) {
 	if ( e.keyCode == 13 ) {
 		document.getElementById("inputBox").value = dom.value;
 		document.getElementById("input_search").click();
@@ -326,10 +335,10 @@ function fn_test(e, dom) {
 	<input type="hidden" name="resultType" value="json"/> <!-- 요청 변수 설정 (검색결과형식 설정, json) --> 
 	<input type="hidden" name="confmKey" value="U01TX0FVVEgyMDIxMTEyNjE4MTM0NzExMTk1OTU="/><!-- 요청 변수 설정 (승인키) -->
 	<div align="center" style="margin-top:100px;">
-		<input type="text" id="inputBox" name="keyword" value="" style="display:none; " /><!-- 요청 변수 설정 (키워드) -->
-    <input type="text" id="rr" name="keyword" value="" style="height: 50px;
-    font-size: 30px;" onKeyDown="javascript:fn_test(event, this)"/><!-- 요청 변수 설정 (키워드) -->
-		<input type="button" id="input_search" onClick="getAddr();" value="주소검색하기"/>
+		<input type="text" id="inputBox" name="keyword" value="" style="display:none;" /><!-- 요청 변수 설정 (키워드) -->
+    <input type="text" id="search" class="search" name="keyword" value=""
+     onKeyDown="javascript:fn_keyDown(event, this)"/><!-- 요청 변수 설정 (키워드) -->
+		<input type="button" id="input_search" class="searchBtn" onClick="getAddr();" value="검색"/>
 	</div>
 	<div id="list" ></div><!-- 검색 결과 리스트 출력 영역 -->
 </form>
@@ -342,19 +351,19 @@ function fn_test(e, dom) {
                         <div class="information_use_wrap" style="display:none">
                              <table class="notice_table" summary="" >
                                 <colgroup>
-                                    <col width="10%">
-                                    <col width="90%">
+                                    <col width="100%">
+                                    <col width="0%">
                                 </colgroup>
                                 <thead>
                                     <tr>
-                                        <th scope="col">번호</th>
-                                        <th scope="col">주소</th>
+                                        <!-- <th scope="col">번호</th> -->
+                                        <th scope="col"> </th>
                                     </tr>
                                 </thead>
                                 <tbody id="tableBody">
                                 </tbody>
                             </table>
-                            <a href="#none" class="btn_styleLine1">더보기 (<strong>1</strong>/<span>10</span>)</a>
+                            <!-- <a href="#none" class="btn_styleLine1">더보기 (<strong>1</strong>/<span>10</span>)</a> -->
                         </div>
                     </div>
                 </div>
