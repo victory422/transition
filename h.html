@@ -138,9 +138,8 @@ function fn_check_code(sido, gungu, dong, code){
 			return;
 		}
 	*/
-	console.log(code);
-	console.log(someCan[i]);
-		if(code == someCan[i] ) {
+
+	if(code == someCan[i] ) {
 			console.log("someCan");
 			alert("일부 배송가능한 지역으로 지정된 곳");
 			return;
@@ -197,9 +196,9 @@ function fn_check_code(sido, gungu, dong, code){
 					}
 				}
 			}
+			console.log(mSet(sTemp));
+			console.log(mSet(fTemp));
 		}
-		console.log(mSet(sTemp));
-		console.log(mSet(fTemp));
 
 		
 		if(temp.length == 8) { // 8일 땐 도-시-구-동 까지의 데이터
@@ -208,16 +207,15 @@ function fn_check_code(sido, gungu, dong, code){
 				if( tm.substr(0,5) == jm.substr(0,5)  ) {
 					if( tm.substr(0,8) != jm.substr(0,8) ) {
 						sTemp.push(jm);
-						if( jm == '4113511700 ') alert();
 					}else {
 						fTemp.push(jm);
 					}
 				}
 			}
+			console.log(mSet(sTemp));
+			console.log(mSet(fTemp));
 		}
 		
-		console.log(mSet(sTemp));
-		console.log(mSet(fTemp));
 		
 	}
 	
@@ -263,7 +261,9 @@ function arr_arr(arr1, arr2) {
 
 function makeListJson(jsonStr){
 	var htmlStr = "";
+	var temp = [];
 	$(jsonStr.results.juso).each(function(){
+		temp.push(jsonStr.results.juso);
 		//console.log($(jsonStr.results.juso));
 		htmlStr += "<tr>";
 		htmlStr += "<td></td>";
@@ -272,6 +272,7 @@ function makeListJson(jsonStr){
 		
 		//(this.siNm,this.sggNm,this.emdNm);
 	});
+		console.log(mSet(temp));
 		document.getElementById("tableBody").innerHTML += htmlStr;
 		document.querySelector(".information_use_wrap").setAttribute("style","display:block");
 	
