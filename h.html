@@ -117,7 +117,7 @@ function fn_check_code(sido, gungu, dong, code){
 		
 		if(code.substr(0,temp.length) == temp) {
 			console.log("all");
-			alert("전지역 배송가능한 지역 서울부터 의정부까지 지정해놓은 시");
+			alert("새벽배송 가능지역입니다.");
 			return;
 		}
 	}
@@ -143,9 +143,9 @@ function fn_check_code(sido, gungu, dong, code){
 		}
 	*/
 
-	if(code == someCan[i] ) {
+		if(code == someCan[i] ) {
 			console.log("someCan");
-			alert("일부 배송가능한 지역으로 지정된 곳");
+			alert("새벽배송 가능지역입니다.");
 			return;
 		}
 	}
@@ -227,7 +227,7 @@ function fn_check_code(sido, gungu, dong, code){
 	console.log(hardlyGetData);
 	for(var x = 0 ; x < hardlyGetData.length; x++ ) {
 		if ( code == hardlyGetData[x] ) {
-			alert('배송가능 어려울 뻔 했지만 특별히 해준다');
+			alert('새벽배송 가능지역입니다.');
 			return;
 		}
 	}
@@ -235,7 +235,7 @@ function fn_check_code(sido, gungu, dong, code){
 	// 복잡한 일부 불가지역 로직.. end
 	 
 	//여기까지 오다니... 안돼
-	alert('죄송합니다. 배송가능 지역이 아닙니다.');
+	alert('새벽배송 불가지역입니다.');
 	return;
 	
 }
